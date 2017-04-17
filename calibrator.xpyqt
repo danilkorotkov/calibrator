@@ -1,0 +1,30 @@
+<!--
+###########################################################################################
+##      Created using Monkey Studio IDE v1.9.0.4 (1.9.0.4)
+##
+##  Author    : You Name <your@email.org>
+##  Project   : calibrator
+##  FileName  : calibrator.xpythonqt
+##  Date      : 2017-04-16T17:27:13
+##  License   : GPL
+##  Comment   : Creating using Monkey Studio RAD
+##  Home Page : http://www.mydomain.org
+##
+##  This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
+##  WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+##
+###########################################################################################
+-->
+<!DOCTYPE XUPProject>
+<project name="calibrator" version="1.1.0" >
+    <variable name="XUP.MAIN_FILE">
+        <value>main.py</value>
+    </variable>
+    <variable name="FORMS">
+        <file>calibrator.ui</file>
+    </variable>
+    <variable name="PYTHON_FILES" >
+        <file>main.py</file>
+        <file>calibrator.py</file>
+    </variable>
+</project>
