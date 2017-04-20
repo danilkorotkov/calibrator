@@ -121,12 +121,12 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
         self.R200.pressed.connect(self.RB_200)
         self.R300.pressed.connect(self.RB_300)
 
-        self.pBtn_Channel_1.pressed.connect(self.changeRow)
-        self.pBtn_Channel_2.pressed.connect(self.changeRow)
-        self.pBtn_Channel_3.pressed.connect(self.changeRow)        
-        self.pBtn_Channel_4.pressed.connect(self.changeRow)
-        self.pBtn_Channel_5.pressed.connect(self.changeRow)
-        self.pBtn_Channel_6.pressed.connect(self.changeRow)
+        self.pBtn_Channel_1.clicked.connect(self.changeRow)
+        self.pBtn_Channel_2.clicked.connect(self.changeRow)
+        self.pBtn_Channel_3.clicked.connect(self.changeRow)        
+        self.pBtn_Channel_4.clicked.connect(self.changeRow)
+        self.pBtn_Channel_5.clicked.connect(self.changeRow)
+        self.pBtn_Channel_6.clicked.connect(self.changeRow)
 
         self.pushButton_2.pressed.connect(self.Get_Volts)
         self.pushButton_3.pressed.connect(self.Calc)
@@ -149,18 +149,11 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
         elif self.checkRow() & self.lineCalcked == 0:
             self.textEdit.setText('there is an empty cell or Calc is not finished')
             
-            print name, sender.isChecked(), 'pBtn_Channel_'+str(self.C), getattr(self, 'pBtn_Channel_'+str(self.C)).isChecked()
-            
             self.GroupChannel.setExclusive(False)
             self.GroupChannel.checkedButton().setChecked(False)
-            print name, sender.isChecked(), 'pBtn_Channel_'+str(self.C), getattr(self, 'pBtn_Channel_'+str(self.C)).isChecked()
- 
             getattr(self, 'pBtn_Channel_'+str(self.C)).setChecked(True)
             self.GroupChannel.setExclusive(True)
-            
-            print name, sender.isChecked(), 'pBtn_Channel_'+str(self.C), getattr(self, 'pBtn_Channel_'+str(self.C)).isChecked()
-            
-
+        
             return
 
         self.C=int(name[s-1])
@@ -197,11 +190,6 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
         for x in range(4):
             self.Volts[x][1]=0
         self.test1()
-
-
-
-    def Show_Volts(self):
-        pass
     
 
     def Get_Volts(self):
