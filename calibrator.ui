@@ -78,7 +78,6 @@ p, li { white-space: pre-wrap; }
       <height>27</height>
      </rect>
     </property>
-<<<<<<< HEAD
     <property name="focusPolicy">
      <enum>Qt::NoFocus</enum>
     </property>
@@ -105,20 +104,12 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="shortcut">
      <string notr="true"/>
-=======
-    <property name="text">
-     <string>Канал 1</string>
->>>>>>> origin/master
     </property>
     <property name="checked">
      <bool>true</bool>
     </property>
     <property name="autoExclusive">
-<<<<<<< HEAD
      <bool>false</bool>
-=======
-     <bool>true</bool>
->>>>>>> origin/master
     </property>
     <attribute name="buttonGroup">
      <string notr="true">GroupChannel</string>
@@ -133,7 +124,6 @@ p, li { white-space: pre-wrap; }
       <height>27</height>
      </rect>
     </property>
-<<<<<<< HEAD
     <property name="focusPolicy">
      <enum>Qt::NoFocus</enum>
     </property>
@@ -163,10 +153,6 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="autoExclusive">
      <bool>false</bool>
-=======
-    <property name="text">
-     <string>Канал 2</string>
->>>>>>> origin/master
     </property>
     <attribute name="buttonGroup">
      <string notr="true">GroupChannel</string>
@@ -181,7 +167,6 @@ p, li { white-space: pre-wrap; }
       <height>27</height>
      </rect>
     </property>
-<<<<<<< HEAD
     <property name="focusPolicy">
      <enum>Qt::NoFocus</enum>
     </property>
@@ -211,10 +196,6 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="autoExclusive">
      <bool>false</bool>
-=======
-    <property name="text">
-     <string>Канал 3</string>
->>>>>>> origin/master
     </property>
     <attribute name="buttonGroup">
      <string notr="true">GroupChannel</string>
@@ -229,7 +210,6 @@ p, li { white-space: pre-wrap; }
       <height>27</height>
      </rect>
     </property>
-<<<<<<< HEAD
     <property name="focusPolicy">
      <enum>Qt::NoFocus</enum>
     </property>
@@ -259,10 +239,6 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="autoExclusive">
      <bool>false</bool>
-=======
-    <property name="text">
-     <string>Канал 4</string>
->>>>>>> origin/master
     </property>
     <attribute name="buttonGroup">
      <string notr="true">GroupChannel</string>
@@ -277,7 +253,6 @@ p, li { white-space: pre-wrap; }
       <height>27</height>
      </rect>
     </property>
-<<<<<<< HEAD
     <property name="focusPolicy">
      <enum>Qt::NoFocus</enum>
     </property>
@@ -307,10 +282,6 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="autoExclusive">
      <bool>false</bool>
-=======
-    <property name="text">
-     <string>Канал 5</string>
->>>>>>> origin/master
     </property>
     <attribute name="buttonGroup">
      <string notr="true">GroupChannel</string>
@@ -325,7 +296,6 @@ p, li { white-space: pre-wrap; }
       <height>27</height>
      </rect>
     </property>
-<<<<<<< HEAD
     <property name="focusPolicy">
      <enum>Qt::NoFocus</enum>
     </property>
@@ -355,10 +325,6 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="autoExclusive">
      <bool>false</bool>
-=======
-    <property name="text">
-     <string>Канал 6</string>
->>>>>>> origin/master
     </property>
     <attribute name="buttonGroup">
      <string notr="true">GroupChannel</string>
@@ -613,15 +579,12 @@ p, li { white-space: pre-wrap; }
       <height>20</height>
      </rect>
     </property>
-<<<<<<< HEAD
     <property name="focusPolicy">
      <enum>Qt::NoFocus</enum>
     </property>
     <property name="contextMenuPolicy">
      <enum>Qt::NoContextMenu</enum>
     </property>
-=======
->>>>>>> origin/master
     <property name="text">
      <string>100</string>
     </property>
@@ -641,15 +604,12 @@ p, li { white-space: pre-wrap; }
       <height>20</height>
      </rect>
     </property>
-<<<<<<< HEAD
     <property name="focusPolicy">
      <enum>Qt::NoFocus</enum>
     </property>
     <property name="contextMenuPolicy">
      <enum>Qt::NoContextMenu</enum>
     </property>
-=======
->>>>>>> origin/master
     <property name="text">
      <string>166</string>
     </property>
@@ -666,15 +626,12 @@ p, li { white-space: pre-wrap; }
       <height>20</height>
      </rect>
     </property>
-<<<<<<< HEAD
     <property name="focusPolicy">
      <enum>Qt::NoFocus</enum>
     </property>
     <property name="contextMenuPolicy">
      <enum>Qt::NoContextMenu</enum>
     </property>
-=======
->>>>>>> origin/master
     <property name="text">
      <string>200</string>
     </property>
@@ -691,15 +648,12 @@ p, li { white-space: pre-wrap; }
       <height>20</height>
      </rect>
     </property>
-<<<<<<< HEAD
     <property name="focusPolicy">
      <enum>Qt::NoFocus</enum>
     </property>
     <property name="contextMenuPolicy">
      <enum>Qt::NoContextMenu</enum>
     </property>
-=======
->>>>>>> origin/master
     <property name="text">
      <string>300</string>
     </property>
@@ -751,15 +705,11 @@ p, li { white-space: pre-wrap; }
  <resources/>
  <connections/>
  <buttongroups>
-<<<<<<< HEAD
   <buttongroup name="GroupChannel">
    <property name="exclusive">
     <bool>true</bool>
    </property>
   </buttongroup>
-=======
-  <buttongroup name="GroupChannel"/>
->>>>>>> origin/master
   <buttongroup name="GroupResistance"/>
  </buttongroups>
 </ui>

@@ -97,7 +97,6 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
     A2=0
     A1=0
     A0=0
-<<<<<<< HEAD
     #Volts=[[value, IsSet],[value, IsSet],[value, IsSet],[value, IsSet]]
     Volts=[[0, 0],[0, 0],[0, 0],[0, 0]]
     #Volts=[[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]
@@ -107,9 +106,6 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
     lineCalcked=0
     Va=0
     isItStart=0
-=======
-    Volts=[[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]
->>>>>>> origin/master
     
     def __init__ ( self, parent = None ):
         super(Calibrator, self).__init__(parent)
@@ -117,7 +113,6 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
         self.setupUi( self )
         self.move(463, 345)
         self.setWindowModality(QtCore.Qt.WindowModal)
-<<<<<<< HEAD
         self.set_adc()
         self.Exit.pressed.connect(self.close)
 
@@ -136,25 +131,10 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
         self.pushButton_2.pressed.connect(self.Get_Volts)
         self.pushButton_3.pressed.connect(self.Calc)
 
-=======
-        #self.pushButton.pressed.connect(self.test1)
-        self.Exit.pressed.connect(self.close)
-        self.pBtn_Channel_1.pressed.connect(self.Btn1)
-        self.pBtn_Channel_2.pressed.connect(self.Btn2)
-        self.pBtn_Channel_3.pressed.connect(self.Btn3)
-        self.pBtn_Channel_4.pressed.connect(self.Btn4)
-        self.pBtn_Channel_5.pressed.connect(self.Btn5)
-        self.pBtn_Channel_6.pressed.connect(self.Btn6)
-        self.pushButton_2.pressed.connect(self.Get_Volts)
-        self.pushButton_3.pressed.connect(self.Calc)
-        #self.test1()
-        self.Show_Volts()
->>>>>>> origin/master
         
     def __del__ ( self ):
         self.ui = None
 
-<<<<<<< HEAD
 
 #----------------------methods-------------------------------
     def changeRow(self):
@@ -232,101 +212,14 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
         
         
     def test1(self):
-=======
-    def init(self):
-        pass
-#        for p in range(1,7):
-#            for i in range (4):
-#                getattr(self, 'listWidget_'+ str(p)).addItem(str(self.a['Channel'+str(p)][i]))
-
-    def Calc(self):
-        if self.pBtn_Channel_1.isChecked():
-            self.test1(0)
-        elif self.pBtn_Channel_2.isChecked():
-            self.test1(1)
-        elif self.pBtn_Channel_3.isChecked():
-            self.test1(2)
-        elif self.pBtn_Channel_4.isChecked():
-            self.test1(3)
-        elif self.pBtn_Channel_5.isChecked():
-            self.test1(4)
-        elif self.pBtn_Channel_6.isChecked():
-            self.test1(5)
-        else:
-            pass
-
-
-    def Show_Volts(self):
-        self.lineEdit_1.setText(str(self.Volts[0][0]))
-        self.lineEdit_2.setText(str(self.Volts[0][1]))
-        self.lineEdit_3.setText(str(self.Volts[0][2]))
-        self.lineEdit_4.setText(str(self.Volts[0][3]))
-        self.lineEdit_5.setText(str(self.Volts[1][0]))
-        self.lineEdit_6.setText(str(self.Volts[1][1]))
-        self.lineEdit_7.setText(str(self.Volts[1][2]))
-        self.lineEdit_8.setText(str(self.Volts[1][3]))
-        self.lineEdit_9.setText(str(self.Volts[2][0]))
-        self.lineEdit_10.setText(str(self.Volts[2][1]))
-        self.lineEdit_11.setText(str(self.Volts[2][2]))
-        self.lineEdit_12.setText(str(self.Volts[2][3]))
-        self.lineEdit_13.setText(str(self.Volts[3][0]))
-        self.lineEdit_14.setText(str(self.Volts[3][1]))
-        self.lineEdit_15.setText(str(self.Volts[3][2]))
-        self.lineEdit_16.setText(str(self.Volts[3][3]))
-        self.lineEdit_17.setText(str(self.Volts[4][0]))
-        self.lineEdit_18.setText(str(self.Volts[4][1]))
-        self.lineEdit_19.setText(str(self.Volts[4][2]))
-        self.lineEdit_20.setText(str(self.Volts[4][3]))
-        self.lineEdit_21.setText(str(self.Volts[5][0]))
-        self.lineEdit_22.setText(str(self.Volts[5][1]))
-        self.lineEdit_23.setText(str(self.Volts[5][2]))
-        self.lineEdit_24.setText(str(self.Volts[5][3]))
-
-    def Get_Volts(self):
-        self.Volts[0][0]=float(self.lineEdit_1.text())
-        self.Volts[0][1]=float(self.lineEdit_2.text())
-        self.Volts[0][2]=float(self.lineEdit_3.text())
-        self.Volts[0][3]=float(self.lineEdit_4.text())
-        self.Volts[1][0]=float(self.lineEdit_5.text())
-        self.Volts[1][1]=float(self.lineEdit_6.text())
-        self.Volts[1][2]=float(self.lineEdit_7.text())
-        self.Volts[1][3]=float(self.lineEdit_8.text())
-        self.Volts[2][0]=float(self.lineEdit_9.text())
-        self.Volts[2][1]=float(self.lineEdit_10.text())
-        self.Volts[2][2]=float(self.lineEdit_11.text())
-        self.Volts[2][3]=float(self.lineEdit_12.text())
-        self.Volts[3][0]=float(self.lineEdit_13.text())
-        self.Volts[3][1]=float(self.lineEdit_14.text())
-        self.Volts[3][2]=float(self.lineEdit_15.text())
-        self.Volts[3][3]=float(self.lineEdit_16.text())
-        self.Volts[4][0]=float(self.lineEdit_17.text())
-        self.Volts[4][1]=float(self.lineEdit_18.text())
-        self.Volts[4][2]=float(self.lineEdit_19.text())
-        self.Volts[4][3]=float(self.lineEdit_20.text())
-        self.Volts[5][0]=float(self.lineEdit_21.text())
-        self.Volts[5][1]=float(self.lineEdit_22.text())
-        self.Volts[5][2]=float(self.lineEdit_23.text())
-        self.Volts[5][3]=float(self.lineEdit_24.text())
-        
-        self.Show_Volts()
-        
-    def test1(self, x):
->>>>>>> origin/master
         self.textEdit.setText("")
         xy=[[0.766,0.0],[1.2775,174.95],[1.5347,266.5],[2.3016,558,001]]
         A=[[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]
         
-<<<<<<< HEAD
         xy[0][0]=self.Volts[0][0]
         xy[1][0]=self.Volts[1][0]
         xy[2][0]=self.Volts[2][0]
         xy[3][0]=self.Volts[3][0]
-=======
-        xy[0][0]=self.Volts[x][0]
-        xy[1][0]=self.Volts[x][1]
-        xy[2][0]=self.Volts[x][2]
-        xy[3][0]=self.Volts[x][3]
->>>>>>> origin/master
         
         a6=0
         a5=0
@@ -477,7 +370,6 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
             out='-'
         return out
         
-<<<<<<< HEAD
     def RB_100(self):
         self.R=0
 
@@ -489,24 +381,3 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
 
     def RB_300(self):
         self.R=3
-=======
-    def Btn1(self):
-        pass
-        
-    def Btn2(self):
-        pass
-        
-    def Btn3(self):
-        pass
-        
-    def Btn4(self):
-        pass
-        
-    def Btn5(self):
-        pass
-        
-    def Btn6(self):
-        pass
-        
-        
->>>>>>> origin/master
