@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import numpy
-import sys, spidev, os, time, string, csv
+import sys, spidev, os, time, string, csv, math
 from PyQt4 import QtCore, QtGui, uic 
 from PyQt4.Qt import Qt
 from PyQt4.QtGui import *
@@ -42,7 +42,7 @@ class TempThread(QtCore.QThread): # работа с АЦП в потоке
         while self.isRun:
             self.Va=self.GetADC()
             self.temp_signal.emit(self.Va)
-            time.sleep(0.3)
+            time.sleep(0.4)
 
     def stop(self):
         self.isRun=False
@@ -107,6 +107,7 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
     isItStart=0
     TextRow1=''
     TextRow2=''
+    Coeff=[[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]
     
     def __init__ ( self, parent = None ):
         super(Calibrator, self).__init__(parent)
@@ -116,6 +117,8 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
         self.setWindowModality(QtCore.Qt.WindowModal)
         self.setWindowFlags(Qt.FramelessWindowHint)
         self.a=read_settings(self.a)
+        self.Coeff = get_coeff(self.a, self.Temp)
+
         self.set_adc()
         
         self.Exit.pressed.connect(self.close)
@@ -369,6 +372,23 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
         
         self.R=int(name[s-1])
 #------------------------Globals---------------------------------------------
+def get_coeff(sets,Temp):
+    coeff=[[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]
+    for Ch in range(1,7):
+        for i in range(4):
+            a=sets['Channel'+str(Ch)][1]/sets['Channel'+str(Ch)][0]
+            b=sets['Channel'+str(Ch)][2]/sets['Channel'+str(Ch)][0]
+            c=(sets['Channel'+str(Ch)][3]-Temp[i])/sets['Channel'+str(Ch)][0]
+            q=(a*a-3*b)/9
+            r=(a*(2*a*a-9*b)+27*c)/54
+            r2=r*r
+            q3=q*q*q
+            t=math.asinh(abs(r)/math.sqrt(abs(q3)))/3
+            y=-2*math.sinh(t)*math.sqrt(abs(-q))*numpy.sign(r) - a/3
+            coeff[Ch-1][i]=float("%.4f"%y)
+    return coeff
+    
+
 def read_settings(sets):
     try:
         with open('settings.txt', 'rt') as csvfile:
