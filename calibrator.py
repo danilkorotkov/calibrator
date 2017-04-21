@@ -109,16 +109,18 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
         super(Calibrator, self).__init__(parent)
         Ui_Calibrator.__init__(self)
         self.setupUi( self )
-        self.move(263, 145)
+        self.move(300, 50)
         self.setWindowModality(QtCore.Qt.WindowModal)
         self.setWindowFlags(Qt.FramelessWindowHint)
         self.set_adc()
         self.Exit.pressed.connect(self.close)
+        self.pBtn_Channel_1.setStyleSheet(CellSelect)
+        self.R0.setStyleSheet(CellSelect)
 
-        self.R100.pressed.connect(self.RB_100)
-        self.R166.pressed.connect(self.RB_166)
-        self.R200.pressed.connect(self.RB_200)
-        self.R300.pressed.connect(self.RB_300)
+        self.R0.pressed.connect(self.RB)
+        self.R1.pressed.connect(self.RB)
+        self.R2.pressed.connect(self.RB)
+        self.R3.pressed.connect(self.RB)
 
         self.pBtn_Channel_1.clicked.connect(self.changeRow)
         self.pBtn_Channel_2.clicked.connect(self.changeRow)
@@ -143,8 +145,10 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
 
         if self.isItStart==0:
             getattr(self, 'lineEdit_'+str((self.C-1)*4 +self.R +1)).setStyleSheet(CellWait)
+            getattr(self, 'pBtn_Channel_'+str(self.C)).setStyleSheet(CellWait)
             self.C=int(name[s-1])
             self.tempthread.SetChannel(self.C)
+            sender.setStyleSheet(CellSelect)
             return
         elif self.checkRow() & self.lineCalcked == 0:
             self.textEdit.setText(u'Не все ячейки записаны или калибровка не посчитана')
@@ -152,9 +156,11 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
             self.GroupChannel.checkedButton().setChecked(False)
             getattr(self, 'pBtn_Channel_'+str(self.C)).setChecked(True)
             return
-
+        
+        getattr(self, 'pBtn_Channel_'+str(self.C)).setStyleSheet(CellWait)
         self.C=int(name[s-1])
         self.lineCalcked=0
+        sender.setStyleSheet(CellSelect)
 
     def checkRow(self):
         out=self.Volts[0][1] & self.Volts[1][1] & self.Volts[2][1] & self.Volts[3][1] 
@@ -311,40 +317,12 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
             self.A0=detB0/detA
             #print A0
         
-            if (self.C-1)==0:
-                self.a['Channel1'][0]=self.A3
-                self.a['Channel1'][1]=self.A2
-                self.a['Channel1'][2]=self.A1
-                self.a['Channel1'][3]=abs(self.A0)
-            elif (self.C-1)==1:    
-                self.a['Channel2'][0]=self.A3
-                self.a['Channel2'][1]=self.A2
-                self.a['Channel2'][2]=self.A1
-                self.a['Channel2'][3]=abs(self.A0)
-            elif (self.C-1)==2:
-                self.a['Channel3'][0]=self.A3
-                self.a['Channel3'][1]=self.A2
-                self.a['Channel3'][2]=self.A1
-                self.a['Channel3'][3]=abs(self.A0)
-            elif (self.C-1)==3:
-                self.a['Channel4'][0]=self.A3
-                self.a['Channel4'][1]=self.A2
-                self.a['Channel4'][2]=self.A1
-                self.a['Channel4'][3]=abs(self.A0)
-            elif (self.C-1)==4:
-                self.a['Channel5'][0]=self.A3
-                self.a['Channel5'][1]=self.A2
-                self.a['Channel5'][2]=self.A1
-                self.a['Channel5'][3]=abs(self.A0)
-            elif (self.C-1)==5:
-                self.a['Channel6'][0]=self.A3
-                self.a['Channel6'][1]=self.A2
-                self.a['Channel6'][2]=self.A1
-                self.a['Channel6'][3]=abs(self.A0)
-            else:
-                pass
-                
-        
+            Chann='Channel'+str(self.C)
+            self.a[Chann][0]=self.A3
+            self.a[Chann][1]=self.A2
+            self.a[Chann][2]=self.A1
+            self.a[Chann][3]=self.A0
+            
             self.textEdit.setText(
                 "%.4fx" % self.A3+'\xB3'+self.sign(self.A2) + \
                 "%.4fx" % abs(self.A2)+'\xB2'+self.sign(self.A1) + \
@@ -353,6 +331,7 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
         else:
             self.textEdit.setText('detA=0')
         self.textEdit.setAlignment(Qt.AlignCenter)
+        
         getattr(self, 'lineEdit_'+str((self.C-1)*4 + 0+1)).setStyleSheet(CellWait)
         getattr(self, 'lineEdit_'+str((self.C-1)*4 + 1+1)).setStyleSheet(CellWait)
         getattr(self, 'lineEdit_'+str((self.C-1)*4 + 2+1)).setStyleSheet(CellWait)
@@ -365,25 +344,16 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
             out='-'
         return out
         
-    def RB_100(self):
+    def RB(self):
+        sender=self.sender()
+        name=sender.objectName()
+        s=len(name)
+        sender.setStyleSheet(CellSelect)
+        getattr(self, 'R'+str(self.R)).setStyleSheet(CellWait)
         if not self.Volts[self.R][1]:
             getattr(self, 'lineEdit_'+str((self.C-1)*4 +self.R +1)).setStyleSheet(CellWait)
-        self.R=0
-
-    def RB_166(self):
-        if not self.Volts[self.R][1]:
-            getattr(self, 'lineEdit_'+str((self.C-1)*4 +self.R +1)).setStyleSheet(CellWait)
-        self.R=1
-
-    def RB_200(self):
-        if not self.Volts[self.R][1]:
-            getattr(self, 'lineEdit_'+str((self.C-1)*4 +self.R +1)).setStyleSheet(CellWait)
-        self.R=2
-
-    def RB_300(self):
-        if not self.Volts[self.R][1]:
-            getattr(self, 'lineEdit_'+str((self.C-1)*4 +self.R +1)).setStyleSheet(CellWait)
-        self.R=3
+        
+        self.R=int(name[s-1])
 #---------------------------StyleSheet---------------------------------------
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -400,11 +370,11 @@ except AttributeError:
         return QtGui.QApplication.translate(context, text, disambig)
         
 
-CellWait=_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+CellWait=_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 "background-color: rgb(114, 208, 244);")
 
-CellSelect=_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+CellSelect=_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 "background-color: rgb(231, 126, 35);")
 
-CellStored=_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+CellStored=_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 "background-color: rgb(63, 179, 79);")
