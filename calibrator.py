@@ -99,8 +99,6 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
     A0=0
     #Volts=[[value, IsSet],[value, IsSet],[value, IsSet],[value, IsSet]]
     Volts=[[0, 0],[0, 0],[0, 0],[0, 0]]
-    #Volts=[[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]
-    #IsSet=[[False,False,False,False],[False,False,False,False],[False,False,False,False],[False,False,False,False],[False,False,False,False],[False,False,False,False]]
     C=1
     R=0
     lineCalcked=0
@@ -111,8 +109,9 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
         super(Calibrator, self).__init__(parent)
         Ui_Calibrator.__init__(self)
         self.setupUi( self )
-        self.move(463, 345)
+        self.move(263, 145)
         self.setWindowModality(QtCore.Qt.WindowModal)
+        self.setWindowFlags(Qt.FramelessWindowHint)
         self.set_adc()
         self.Exit.pressed.connect(self.close)
 
@@ -143,30 +142,32 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
         s=len(name)
 
         if self.isItStart==0:
+            getattr(self, 'lineEdit_'+str((self.C-1)*4 +self.R +1)).setStyleSheet(CellWait)
             self.C=int(name[s-1])
             self.tempthread.SetChannel(self.C)
             return
         elif self.checkRow() & self.lineCalcked == 0:
-            self.textEdit.setText('there is an empty cell or Calc is not finished')
-            
-            self.GroupChannel.setExclusive(False)
+            self.textEdit.setText(u'Не все ячейки записаны или калибровка не посчитана')
+            self.textEdit.setAlignment(Qt.AlignCenter)
             self.GroupChannel.checkedButton().setChecked(False)
             getattr(self, 'pBtn_Channel_'+str(self.C)).setChecked(True)
-            self.GroupChannel.setExclusive(True)
-        
             return
 
         self.C=int(name[s-1])
         self.lineCalcked=0
 
-
     def checkRow(self):
         out=self.Volts[0][1] & self.Volts[1][1] & self.Volts[2][1] & self.Volts[3][1] 
         return out
         
+
     def got_worker_msg(self, Va):#ловля сигнала от АЦП
         self.Va=Va
+        getattr(self, 'lineEdit_'+str((self.C-1)*4 +self.R +1)).setText('')
         getattr(self, 'lineEdit_'+str((self.C-1)*4 +self.R +1)).setText("%.4f"%self.Va)
+        if not self.Volts[self.R][1]:
+            getattr(self, 'lineEdit_'+str((self.C-1)*4 +self.R +1)).setStyleSheet(CellSelect)
+
 
     def set_adc(self):#запуск ацп в потоке
         GPIO.setup(Mux, GPIO.OUT)
@@ -180,9 +181,11 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
         self.tempthread.start()
 
 
+
     def Calc(self):
         if self.checkRow() == 0:
-            self.textEdit.setText('there is empty cell')
+            self.textEdit.setText(u'Не все ячейки записаны')
+            self.textEdit.setAlignment(Qt.AlignCenter)
             return
         self.lineCalcked=1
         self.isItStart=0
@@ -196,13 +199,16 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
         self.isItStart=1
         self.Volts[self.R][1]=True
         self.Volts[self.R][0]=float(self.Va)
-        self.textEdit.setText('stored '+"%.4f"%self.Va)
+        self.textEdit.setText(u'Записано '+"%.4f"%self.Va)
+        self.textEdit.setAlignment(Qt.AlignCenter)
+        getattr(self, 'lineEdit_'+str((self.C-1)*4 +self.R +1)).setStyleSheet(CellStored)
         
         
     def test1(self):
         self.textEdit.setText("")
-        xy=[[0.766,0.0],[1.2775,174.95],[1.5347,266.5],[2.3016,558,001]]
+
         A=[[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]
+        xy=[[0,0],[0,0],[0,0],[0,0]]
         
         xy[0][0]=self.Volts[0][0]
         xy[1][0]=self.Volts[1][0]
@@ -253,10 +259,7 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
         A[3][1]=a2
         A[3][2]=a1
         A[3][3]=a0
-#In [1]: import numpy
-#In [2]: M = [[1, 2], [3, 4]]
-        #print numpy.linalg.det(A)
-#Out[3]: -2.0000000000000004        
+      
         detA=numpy.linalg.det(A)
         if detA != 0.0:
             #print A
@@ -308,32 +311,32 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
             self.A0=detB0/detA
             #print A0
         
-            if x==0:
+            if (self.C-1)==0:
                 self.a['Channel1'][0]=self.A3
                 self.a['Channel1'][1]=self.A2
                 self.a['Channel1'][2]=self.A1
                 self.a['Channel1'][3]=abs(self.A0)
-            elif x==1:    
+            elif (self.C-1)==1:    
                 self.a['Channel2'][0]=self.A3
                 self.a['Channel2'][1]=self.A2
                 self.a['Channel2'][2]=self.A1
                 self.a['Channel2'][3]=abs(self.A0)
-            elif x==2:
+            elif (self.C-1)==2:
                 self.a['Channel3'][0]=self.A3
                 self.a['Channel3'][1]=self.A2
                 self.a['Channel3'][2]=self.A1
                 self.a['Channel3'][3]=abs(self.A0)
-            elif x==3:
+            elif (self.C-1)==3:
                 self.a['Channel4'][0]=self.A3
                 self.a['Channel4'][1]=self.A2
                 self.a['Channel4'][2]=self.A1
                 self.a['Channel4'][3]=abs(self.A0)
-            elif x==4:
+            elif (self.C-1)==4:
                 self.a['Channel5'][0]=self.A3
                 self.a['Channel5'][1]=self.A2
                 self.a['Channel5'][2]=self.A1
                 self.a['Channel5'][3]=abs(self.A0)
-            elif x==5:
+            elif (self.C-1)==5:
                 self.a['Channel6'][0]=self.A3
                 self.a['Channel6'][1]=self.A2
                 self.a['Channel6'][2]=self.A1
@@ -350,6 +353,10 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
         else:
             self.textEdit.setText('detA=0')
         self.textEdit.setAlignment(Qt.AlignCenter)
+        getattr(self, 'lineEdit_'+str((self.C-1)*4 + 0+1)).setStyleSheet(CellWait)
+        getattr(self, 'lineEdit_'+str((self.C-1)*4 + 1+1)).setStyleSheet(CellWait)
+        getattr(self, 'lineEdit_'+str((self.C-1)*4 + 2+1)).setStyleSheet(CellWait)
+        getattr(self, 'lineEdit_'+str((self.C-1)*4 + 3+1)).setStyleSheet(CellWait)
 
     def sign(self, tempor):
         if tempor>=0:
@@ -359,13 +366,45 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
         return out
         
     def RB_100(self):
+        if not self.Volts[self.R][1]:
+            getattr(self, 'lineEdit_'+str((self.C-1)*4 +self.R +1)).setStyleSheet(CellWait)
         self.R=0
 
     def RB_166(self):
+        if not self.Volts[self.R][1]:
+            getattr(self, 'lineEdit_'+str((self.C-1)*4 +self.R +1)).setStyleSheet(CellWait)
         self.R=1
 
     def RB_200(self):
+        if not self.Volts[self.R][1]:
+            getattr(self, 'lineEdit_'+str((self.C-1)*4 +self.R +1)).setStyleSheet(CellWait)
         self.R=2
 
     def RB_300(self):
+        if not self.Volts[self.R][1]:
+            getattr(self, 'lineEdit_'+str((self.C-1)*4 +self.R +1)).setStyleSheet(CellWait)
         self.R=3
+#---------------------------StyleSheet---------------------------------------
+try:
+    _fromUtf8 = QtCore.QString.fromUtf8
+except AttributeError:
+    def _fromUtf8(s):
+        return s
+
+try:
+    _encoding = QtGui.QApplication.UnicodeUTF8
+    def _translate(context, text, disambig):
+        return QtGui.QApplication.translate(context, text, disambig, _encoding)
+except AttributeError:
+    def _translate(context, text, disambig):
+        return QtGui.QApplication.translate(context, text, disambig)
+        
+
+CellWait=_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+"background-color: rgb(114, 208, 244);")
+
+CellSelect=_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+"background-color: rgb(231, 126, 35);")
+
+CellStored=_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+"background-color: rgb(63, 179, 79);")
