@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import numpy
-import sys, spidev, os, time, string
+import sys, spidev, os, time, string, csv
 from PyQt4 import QtCore, QtGui, uic 
 from PyQt4.Qt import Qt
 from PyQt4.QtGui import *
@@ -42,7 +42,7 @@ class TempThread(QtCore.QThread): # работа с АЦП в потоке
         while self.isRun:
             self.Va=self.GetADC()
             self.temp_signal.emit(self.Va)
-            time.sleep(1)
+            time.sleep(0.3)
 
     def stop(self):
         self.isRun=False
@@ -85,41 +85,48 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
     'sensor2_2':1,
     'Fan1_Allow':1,
     'Fan2_Allow':1,
-    'Channel1':[3.5708,5.3255,319.73,249.65],
-    'Channel2':[3.5708,5.3255,319.73,249.65],
-    'Channel3':[3.5708,5.3255,319.73,249.65],
-    'Channel4':[3.5708,5.3255,319.73,249.65],
-    'Channel5':[3.5708,5.3255,319.73,249.65],
-    'Channel6':[3.5708,5.3255,319.73,249.65],
+    'Channel1':[3.5708,5.3255,319.73,-249.65],
+    'Channel2':[3.5708,5.3255,319.73,-249.65],
+    'Channel3':[3.5708,5.3255,319.73,-249.65],
+    'Channel4':[3.5708,5.3255,319.73,-249.65],
+    'Channel5':[3.5708,5.3255,319.73,-249.65],
+    'Channel6':[3.5708,5.3255,319.73,-249.65],
     'Counter1':0,
     'Counter2':0}
+    Temp=[0,175,266.5,558 ]
     A3=0
     A2=0
     A1=0
     A0=0
     #Volts=[[value, IsSet],[value, IsSet],[value, IsSet],[value, IsSet]]
     Volts=[[0, 0],[0, 0],[0, 0],[0, 0]]
-    #Volts=[[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]
-    #IsSet=[[False,False,False,False],[False,False,False,False],[False,False,False,False],[False,False,False,False],[False,False,False,False],[False,False,False,False]]
     C=1
     R=0
     lineCalcked=0
     Va=0
     isItStart=0
+    TextRow1=''
+    TextRow2=''
     
     def __init__ ( self, parent = None ):
         super(Calibrator, self).__init__(parent)
         Ui_Calibrator.__init__(self)
         self.setupUi( self )
-        self.move(463, 345)
+        self.move(300, 50)
         self.setWindowModality(QtCore.Qt.WindowModal)
+        self.setWindowFlags(Qt.FramelessWindowHint)
+        self.a=read_settings(self.a)
         self.set_adc()
+        
         self.Exit.pressed.connect(self.close)
-
-        self.R100.pressed.connect(self.RB_100)
-        self.R166.pressed.connect(self.RB_166)
-        self.R200.pressed.connect(self.RB_200)
-        self.R300.pressed.connect(self.RB_300)
+        self.pBtn_Channel_1.setStyleSheet(CellSelect)
+        self.R0.setStyleSheet(CellSelect)
+        
+        self.SaveButton.pressed.connect(lambda: save_settings(self.a))
+        self.R0.pressed.connect(self.RB)
+        self.R1.pressed.connect(self.RB)
+        self.R2.pressed.connect(self.RB)
+        self.R3.pressed.connect(self.RB)
 
         self.pBtn_Channel_1.clicked.connect(self.changeRow)
         self.pBtn_Channel_2.clicked.connect(self.changeRow)
@@ -130,6 +137,7 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
 
         self.pushButton_2.pressed.connect(self.Get_Volts)
         self.pushButton_3.pressed.connect(self.Calc)
+        
 
         
     def __del__ ( self ):
@@ -143,30 +151,36 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
         s=len(name)
 
         if self.isItStart==0:
+            getattr(self, 'lineEdit_'+str((self.C-1)*4 +self.R +1)).setStyleSheet(CellWait)
+            getattr(self, 'pBtn_Channel_'+str(self.C)).setStyleSheet(CellWait)
             self.C=int(name[s-1])
             self.tempthread.SetChannel(self.C)
+            sender.setStyleSheet(CellSelect)
             return
         elif self.checkRow() & self.lineCalcked == 0:
-            self.textEdit.setText('there is an empty cell or Calc is not finished')
-            
-            self.GroupChannel.setExclusive(False)
+            self.textEdit.setText(u'Не все ячейки записаны или калибровка не посчитана')
+            self.textEdit.setAlignment(Qt.AlignCenter)
             self.GroupChannel.checkedButton().setChecked(False)
             getattr(self, 'pBtn_Channel_'+str(self.C)).setChecked(True)
-            self.GroupChannel.setExclusive(True)
-        
             return
-
+        
+        getattr(self, 'pBtn_Channel_'+str(self.C)).setStyleSheet(CellWait)
         self.C=int(name[s-1])
         self.lineCalcked=0
-
+        sender.setStyleSheet(CellSelect)
 
     def checkRow(self):
         out=self.Volts[0][1] & self.Volts[1][1] & self.Volts[2][1] & self.Volts[3][1] 
         return out
         
+
     def got_worker_msg(self, Va):#ловля сигнала от АЦП
         self.Va=Va
+        getattr(self, 'lineEdit_'+str((self.C-1)*4 +self.R +1)).setText('')
         getattr(self, 'lineEdit_'+str((self.C-1)*4 +self.R +1)).setText("%.4f"%self.Va)
+        if not self.Volts[self.R][1]:
+            getattr(self, 'lineEdit_'+str((self.C-1)*4 +self.R +1)).setStyleSheet(CellSelect)
+
 
     def set_adc(self):#запуск ацп в потоке
         GPIO.setup(Mux, GPIO.OUT)
@@ -180,10 +194,14 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
         self.tempthread.start()
 
 
+
     def Calc(self):
+        sender=self.sender()
         if self.checkRow() == 0:
-            self.textEdit.setText('there is empty cell')
+            self.textEdit.setText(u'Не все ячейки записаны')
+            self.textEdit.setAlignment(Qt.AlignCenter)
             return
+        
         self.lineCalcked=1
         self.isItStart=0
         
@@ -196,18 +214,26 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
         self.isItStart=1
         self.Volts[self.R][1]=True
         self.Volts[self.R][0]=float(self.Va)
-        self.textEdit.setText('stored '+"%.4f"%self.Va)
+        self.textEdit.setText(u'Записано '+"%.4f"%self.Va)
+        self.textEdit.setAlignment(Qt.AlignCenter)
+        getattr(self, 'lineEdit_'+str((self.C-1)*4 +self.R +1)).setStyleSheet(CellStored)
         
         
     def test1(self):
         self.textEdit.setText("")
-        xy=[[0.766,0.0],[1.2775,174.95],[1.5347,266.5],[2.3016,558,001]]
+
         A=[[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]
+        xy=[[0,0],[0,0],[0,0],[0,0]]
         
         xy[0][0]=self.Volts[0][0]
         xy[1][0]=self.Volts[1][0]
         xy[2][0]=self.Volts[2][0]
         xy[3][0]=self.Volts[3][0]
+        
+        xy[0][1]=self.Temp[0]
+        xy[1][1]=self.Temp[1]
+        xy[2][1]=self.Temp[2]
+        xy[3][1]=self.Temp[3]
         
         a6=0
         a5=0
@@ -253,10 +279,7 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
         A[3][1]=a2
         A[3][2]=a1
         A[3][3]=a0
-#In [1]: import numpy
-#In [2]: M = [[1, 2], [3, 4]]
-        #print numpy.linalg.det(A)
-#Out[3]: -2.0000000000000004        
+      
         detA=numpy.linalg.det(A)
         if detA != 0.0:
             #print A
@@ -308,40 +331,12 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
             self.A0=detB0/detA
             #print A0
         
-            if x==0:
-                self.a['Channel1'][0]=self.A3
-                self.a['Channel1'][1]=self.A2
-                self.a['Channel1'][2]=self.A1
-                self.a['Channel1'][3]=abs(self.A0)
-            elif x==1:    
-                self.a['Channel2'][0]=self.A3
-                self.a['Channel2'][1]=self.A2
-                self.a['Channel2'][2]=self.A1
-                self.a['Channel2'][3]=abs(self.A0)
-            elif x==2:
-                self.a['Channel3'][0]=self.A3
-                self.a['Channel3'][1]=self.A2
-                self.a['Channel3'][2]=self.A1
-                self.a['Channel3'][3]=abs(self.A0)
-            elif x==3:
-                self.a['Channel4'][0]=self.A3
-                self.a['Channel4'][1]=self.A2
-                self.a['Channel4'][2]=self.A1
-                self.a['Channel4'][3]=abs(self.A0)
-            elif x==4:
-                self.a['Channel5'][0]=self.A3
-                self.a['Channel5'][1]=self.A2
-                self.a['Channel5'][2]=self.A1
-                self.a['Channel5'][3]=abs(self.A0)
-            elif x==5:
-                self.a['Channel6'][0]=self.A3
-                self.a['Channel6'][1]=self.A2
-                self.a['Channel6'][2]=self.A1
-                self.a['Channel6'][3]=abs(self.A0)
-            else:
-                pass
-                
-        
+            Chann='Channel'+str(self.C)
+            self.a[Chann][0]=self.A3
+            self.a[Chann][1]=self.A2
+            self.a[Chann][2]=self.A1
+            self.a[Chann][3]=self.A0
+            
             self.textEdit.setText(
                 "%.4fx" % self.A3+'\xB3'+self.sign(self.A2) + \
                 "%.4fx" % abs(self.A2)+'\xB2'+self.sign(self.A1) + \
@@ -350,6 +345,11 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
         else:
             self.textEdit.setText('detA=0')
         self.textEdit.setAlignment(Qt.AlignCenter)
+        
+        getattr(self, 'lineEdit_'+str((self.C-1)*4 + 0+1)).setStyleSheet(CellWait)
+        getattr(self, 'lineEdit_'+str((self.C-1)*4 + 1+1)).setStyleSheet(CellWait)
+        getattr(self, 'lineEdit_'+str((self.C-1)*4 + 2+1)).setStyleSheet(CellWait)
+        getattr(self, 'lineEdit_'+str((self.C-1)*4 + 3+1)).setStyleSheet(CellWait)
 
     def sign(self, tempor):
         if tempor>=0:
@@ -358,14 +358,93 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
             out='-'
         return out
         
-    def RB_100(self):
-        self.R=0
+    def RB(self):
+        sender=self.sender()
+        name=sender.objectName()
+        s=len(name)
+        sender.setStyleSheet(CellSelect)
+        getattr(self, 'R'+str(self.R)).setStyleSheet(CellWait)
+        if not self.Volts[self.R][1]:
+            getattr(self, 'lineEdit_'+str((self.C-1)*4 +self.R +1)).setStyleSheet(CellWait)
+        
+        self.R=int(name[s-1])
+#------------------------Globals---------------------------------------------
+def read_settings(sets):
+    try:
+        with open('settings.txt', 'rt') as csvfile:
+            spamreader = csv.reader(csvfile, delimiter='=', quotechar='|')
+            for row in spamreader:
+                k, v = row
+                try:
+                    sets[k] = int(v)
+                except ValueError:
+                    line=v
+                    line=line.replace('[','')
+                    line=line.replace(']','')
+                    sets[k] = line.split(",")
+                    s=len(sets[k])
+                    i=0
+                    while i<s:                
+                        x = sets[k][i]
+                        x=float(x)
+                        sets[k][i]=x
+                        i+=1
+    except IOError:
+        sets=metrocss.a
+        save_settings(sets)   
+    return sets   
 
-    def RB_166(self):
-        self.R=1
+def save_settings(sets):
+    with open('settings.txt', 'wt') as csvfile:
+        spamwriter = csv.writer(csvfile, delimiter='=',
+                                quotechar='|', quoting=csv.QUOTE_MINIMAL)
+        for key, val in sets.items():
+            spamwriter.writerow([key, val])
 
-    def RB_200(self):
-        self.R=2
+#---------------------------StyleSheet---------------------------------------
+try:
+    _fromUtf8 = QtCore.QString.fromUtf8
+except AttributeError:
+    def _fromUtf8(s):
+        return s
 
-    def RB_300(self):
-        self.R=3
+try:
+    _encoding = QtGui.QApplication.UnicodeUTF8
+    def _translate(context, text, disambig):
+        return QtGui.QApplication.translate(context, text, disambig, _encoding)
+except AttributeError:
+    def _translate(context, text, disambig):
+        return QtGui.QApplication.translate(context, text, disambig)
+        
+
+CellWait=_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
+"background-color: rgb(114, 208, 244);")
+
+CellSelect=_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
+"background-color: rgb(231, 126, 35);")
+
+CellStored=_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
+"background-color: rgb(63, 179, 79);")
+
+def HtmlText(s1,s2):
+    out=_fromUtf8("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'HelveticaNeueCyr\'; font-size:28pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"%s</p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">%s</p></body></html>"(s1,s2))
+    return out
+    
+ButPassive=_fromUtf8("border-style: outset;\n"
+"font: 18pt \"HelveticaNeueCyr\";\n"
+"color:black;\n"
+" text-align: center;\n"
+" background-color: rgb(194, 194, 194);\n"
+"")
+
+ButActive=_fromUtf8("border-style: outset;\n"
+"font: 18pt \"HelveticaNeueCyr\";\n"
+"color:black;\n"
+" text-align: center;\n"
+" background-color: rgb(231, 126, 35);\n"
+"")
