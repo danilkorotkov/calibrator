@@ -11,13 +11,16 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form1</string>
+   <string notr="true">Form1</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(81, 81, 77);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QTextEdit" name="textEdit">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -52,7 +55,7 @@
     </property>
     <property name="styleSheet">
      <string notr="true">text-align:center;
-font: 24pt &quot;HelveticaNeueCyr&quot;;
+font: 28pt &quot;HelveticaNeueCyr&quot;;
 background-color: rgb(231, 126, 35);</string>
     </property>
     <property name="frameShape">
@@ -77,8 +80,8 @@ background-color: rgb(231, 126, 35);</string>
      <string notr="true">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'HelveticaNeueCyr'; font-size:24pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'HelveticaNeueCyr'; font-size:28pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="textInteractionFlags">
      <set>Qt::NoTextInteraction</set>
@@ -87,7 +90,7 @@ p, li { white-space: pre-wrap; }
    <widget class="QPushButton" name="Exit">
     <property name="geometry">
      <rect>
-      <x>410</x>
+      <x>482</x>
       <y>750</y>
       <width>150</width>
       <height>150</height>
@@ -1773,12 +1776,27 @@ background-color: rgb(114, 208, 244);</string>
     <property name="contextMenuPolicy">
      <enum>Qt::NoContextMenu</enum>
     </property>
+    <property name="toolTip">
+     <string notr="true"/>
+    </property>
+    <property name="statusTip">
+     <string notr="true"/>
+    </property>
+    <property name="whatsThis">
+     <string notr="true"/>
+    </property>
+    <property name="accessibleName">
+     <string notr="true"/>
+    </property>
+    <property name="accessibleDescription">
+     <string notr="true"/>
+    </property>
     <property name="styleSheet">
      <string notr="true">font: 22pt &quot;HelveticaNeueCyr&quot;;
 background-color: rgb(114, 208, 244);</string>
     </property>
     <property name="text">
-     <string>100 Ω</string>
+     <string notr="true">100 Ω</string>
     </property>
     <property name="checked">
      <bool>true</bool>
@@ -1802,12 +1820,27 @@ background-color: rgb(114, 208, 244);</string>
     <property name="contextMenuPolicy">
      <enum>Qt::NoContextMenu</enum>
     </property>
+    <property name="toolTip">
+     <string notr="true"/>
+    </property>
+    <property name="statusTip">
+     <string notr="true"/>
+    </property>
+    <property name="whatsThis">
+     <string notr="true"/>
+    </property>
+    <property name="accessibleName">
+     <string notr="true"/>
+    </property>
+    <property name="accessibleDescription">
+     <string notr="true"/>
+    </property>
     <property name="styleSheet">
      <string notr="true">font: 22pt &quot;HelveticaNeueCyr&quot;;
 background-color: rgb(114, 208, 244);</string>
     </property>
     <property name="text">
-     <string>166 Ω</string>
+     <string notr="true">166 Ω</string>
     </property>
     <attribute name="buttonGroup">
      <string notr="true">GroupResistance</string>
@@ -1828,12 +1861,27 @@ background-color: rgb(114, 208, 244);</string>
     <property name="contextMenuPolicy">
      <enum>Qt::NoContextMenu</enum>
     </property>
+    <property name="toolTip">
+     <string notr="true"/>
+    </property>
+    <property name="statusTip">
+     <string notr="true"/>
+    </property>
+    <property name="whatsThis">
+     <string notr="true"/>
+    </property>
+    <property name="accessibleName">
+     <string notr="true"/>
+    </property>
+    <property name="accessibleDescription">
+     <string notr="true"/>
+    </property>
     <property name="styleSheet">
      <string notr="true">font: 22pt &quot;HelveticaNeueCyr&quot;;
 background-color: rgb(114, 208, 244);</string>
     </property>
     <property name="text">
-     <string>200 Ω</string>
+     <string notr="true">200 Ω</string>
     </property>
     <attribute name="buttonGroup">
      <string notr="true">GroupResistance</string>
@@ -1854,12 +1902,27 @@ background-color: rgb(114, 208, 244);</string>
     <property name="contextMenuPolicy">
      <enum>Qt::NoContextMenu</enum>
     </property>
+    <property name="toolTip">
+     <string notr="true"/>
+    </property>
+    <property name="statusTip">
+     <string notr="true"/>
+    </property>
+    <property name="whatsThis">
+     <string notr="true"/>
+    </property>
+    <property name="accessibleName">
+     <string notr="true"/>
+    </property>
+    <property name="accessibleDescription">
+     <string notr="true"/>
+    </property>
     <property name="styleSheet">
      <string notr="true">font: 22pt &quot;HelveticaNeueCyr&quot;;
 background-color: rgb(114, 208, 244);</string>
     </property>
     <property name="text">
-     <string>300 Ω</string>
+     <string notr="true">300 Ω</string>
     </property>
     <attribute name="buttonGroup">
      <string notr="true">GroupResistance</string>
@@ -1868,7 +1931,7 @@ background-color: rgb(114, 208, 244);</string>
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>10</x>
       <y>750</y>
       <width>150</width>
       <height>150</height>
@@ -1911,7 +1974,7 @@ color:black;
    <widget class="QPushButton" name="pushButton_3">
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>167</x>
       <y>750</y>
       <width>150</width>
       <height>150</height>
@@ -1960,18 +2023,75 @@ color:black;
       <height>80</height>
      </rect>
     </property>
+    <property name="toolTip">
+     <string notr="true"/>
+    </property>
+    <property name="statusTip">
+     <string notr="true"/>
+    </property>
+    <property name="whatsThis">
+     <string notr="true"/>
+    </property>
+    <property name="accessibleName">
+     <string notr="true"/>
+    </property>
+    <property name="accessibleDescription">
+     <string notr="true"/>
+    </property>
     <property name="styleSheet">
      <string notr="true">font: 22pt &quot;HelveticaNeueCyr&quot;;
 background-color: rgb(114, 208, 244);</string>
     </property>
     <property name="text">
-     <string>Резистор Канал</string>
+     <string notr="true">Резистор Канал</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
     </property>
     <property name="wordWrap">
      <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="SaveButton">
+    <property name="geometry">
+     <rect>
+      <x>324</x>
+      <y>750</y>
+      <width>150</width>
+      <height>150</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="contextMenuPolicy">
+     <enum>Qt::NoContextMenu</enum>
+    </property>
+    <property name="toolTip">
+     <string notr="true"/>
+    </property>
+    <property name="statusTip">
+     <string notr="true"/>
+    </property>
+    <property name="whatsThis">
+     <string notr="true"/>
+    </property>
+    <property name="accessibleName">
+     <string notr="true"/>
+    </property>
+    <property name="accessibleDescription">
+     <string notr="true"/>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-style: outset;
+font: 18pt &quot;HelveticaNeueCyr&quot;;
+color:black;
+ text-align: center;
+ background-color: rgb(194, 194, 194);
+</string>
+    </property>
+    <property name="text">
+     <string notr="true">Сохранить</string>
     </property>
    </widget>
   </widget>

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file '/home/pi/Documents/Monkey Studio/calibrator/calibrator.ui'
 #
-# Created: Fri Apr 21 12:46:42 2017
+# Created: Fri Apr 21 20:31:55 2017
 #      by: PyQt4 UI code generator 4.11.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,12 +26,14 @@ except AttributeError:
 class Ui_Calibrator(object):
     def setupUi(self, Calibrator):
         Calibrator.setObjectName(_fromUtf8("Calibrator"))
-        Calibrator.resize(642, 778)
+        Calibrator.resize(642, 930)
+        Calibrator.setWindowTitle(_fromUtf8("Form1"))
         Calibrator.setStyleSheet(_fromUtf8("background-color: rgb(81, 81, 77);"))
         self.centralwidget = QtGui.QWidget(Calibrator)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
         self.textEdit = QtGui.QTextEdit(self.centralwidget)
-        self.textEdit.setGeometry(QtCore.QRect(10, 20, 621, 91))
+        self.textEdit.setEnabled(True)
+        self.textEdit.setGeometry(QtCore.QRect(10, 10, 621, 91))
         self.textEdit.setFocusPolicy(QtCore.Qt.NoFocus)
         self.textEdit.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.textEdit.setAcceptDrops(False)
@@ -41,8 +43,8 @@ class Ui_Calibrator(object):
         self.textEdit.setAccessibleName(_fromUtf8(""))
         self.textEdit.setAccessibleDescription(_fromUtf8(""))
         self.textEdit.setStyleSheet(_fromUtf8("text-align:center;\n"
-"font: 24pt \"HelveticaNeueCyr\";\n"
-"background-color: rgb(114, 208, 244);"))
+"font: 28pt \"HelveticaNeueCyr\";\n"
+"background-color: rgb(231, 126, 35);"))
         self.textEdit.setFrameShape(QtGui.QFrame.NoFrame)
         self.textEdit.setFrameShadow(QtGui.QFrame.Plain)
         self.textEdit.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
@@ -52,12 +54,13 @@ class Ui_Calibrator(object):
         self.textEdit.setHtml(_fromUtf8("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'HelveticaNeueCyr\'; font-size:24pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;\"><br /></p></body></html>"))
+"</style></head><body style=\" font-family:\'HelveticaNeueCyr\'; font-size:28pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">строка 1</p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">трока 2</p></body></html>"))
         self.textEdit.setTextInteractionFlags(QtCore.Qt.NoTextInteraction)
         self.textEdit.setObjectName(_fromUtf8("textEdit"))
         self.Exit = QtGui.QPushButton(self.centralwidget)
-        self.Exit.setGeometry(QtCore.QRect(410, 610, 150, 150))
+        self.Exit.setGeometry(QtCore.QRect(410, 750, 150, 150))
         self.Exit.setFocusPolicy(QtCore.Qt.NoFocus)
         self.Exit.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.Exit.setToolTip(_fromUtf8(""))
@@ -66,7 +69,7 @@ class Ui_Calibrator(object):
         self.Exit.setAccessibleName(_fromUtf8(""))
         self.Exit.setAccessibleDescription(_fromUtf8(""))
         self.Exit.setStyleSheet(_fromUtf8("border-style: outset;\n"
-"font: 16pt \"Free Helvetian\";\n"
+"font: 18pt \"HelveticaNeueCyr\";\n"
 "color:black;\n"
 " text-align: center;\n"
 " background-color: rgb(194, 194, 194);\n"
@@ -74,7 +77,7 @@ class Ui_Calibrator(object):
         self.Exit.setText(_fromUtf8("Выход"))
         self.Exit.setObjectName(_fromUtf8("Exit"))
         self.pBtn_Channel_1 = QtGui.QRadioButton(self.centralwidget)
-        self.pBtn_Channel_1.setGeometry(QtCore.QRect(10, 190, 141, 60))
+        self.pBtn_Channel_1.setGeometry(QtCore.QRect(10, 200, 141, 80))
         self.pBtn_Channel_1.setFocusPolicy(QtCore.Qt.NoFocus)
         self.pBtn_Channel_1.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.pBtn_Channel_1.setToolTip(_fromUtf8(""))
@@ -83,9 +86,8 @@ class Ui_Calibrator(object):
         self.pBtn_Channel_1.setAccessibleName(_fromUtf8(""))
         self.pBtn_Channel_1.setAccessibleDescription(_fromUtf8(""))
         self.pBtn_Channel_1.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.pBtn_Channel_1.setStyleSheet(_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
-"background-color: rgb(114, 208, 244);\n"
-"QRadioButton::indicator: {width: 30px; height: 30px;}"))
+        self.pBtn_Channel_1.setStyleSheet(_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
+"background-color: rgb(114, 208, 244);"))
         self.pBtn_Channel_1.setText(_fromUtf8("Канал 1"))
         self.pBtn_Channel_1.setIconSize(QtCore.QSize(24, 24))
         self.pBtn_Channel_1.setShortcut(_fromUtf8(""))
@@ -97,7 +99,7 @@ class Ui_Calibrator(object):
         self.GroupChannel.setObjectName(_fromUtf8("GroupChannel"))
         self.GroupChannel.addButton(self.pBtn_Channel_1)
         self.pBtn_Channel_2 = QtGui.QRadioButton(self.centralwidget)
-        self.pBtn_Channel_2.setGeometry(QtCore.QRect(10, 260, 141, 60))
+        self.pBtn_Channel_2.setGeometry(QtCore.QRect(10, 290, 141, 80))
         self.pBtn_Channel_2.setFocusPolicy(QtCore.Qt.NoFocus)
         self.pBtn_Channel_2.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.pBtn_Channel_2.setToolTip(_fromUtf8(""))
@@ -106,7 +108,7 @@ class Ui_Calibrator(object):
         self.pBtn_Channel_2.setAccessibleName(_fromUtf8(""))
         self.pBtn_Channel_2.setAccessibleDescription(_fromUtf8(""))
         self.pBtn_Channel_2.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.pBtn_Channel_2.setStyleSheet(_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+        self.pBtn_Channel_2.setStyleSheet(_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 "background-color: rgb(114, 208, 244);"))
         self.pBtn_Channel_2.setText(_fromUtf8("Канал 2"))
         self.pBtn_Channel_2.setIconSize(QtCore.QSize(24, 24))
@@ -116,7 +118,7 @@ class Ui_Calibrator(object):
         self.pBtn_Channel_2.setObjectName(_fromUtf8("pBtn_Channel_2"))
         self.GroupChannel.addButton(self.pBtn_Channel_2)
         self.pBtn_Channel_3 = QtGui.QRadioButton(self.centralwidget)
-        self.pBtn_Channel_3.setGeometry(QtCore.QRect(10, 330, 141, 60))
+        self.pBtn_Channel_3.setGeometry(QtCore.QRect(10, 380, 141, 80))
         self.pBtn_Channel_3.setFocusPolicy(QtCore.Qt.NoFocus)
         self.pBtn_Channel_3.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.pBtn_Channel_3.setToolTip(_fromUtf8(""))
@@ -125,7 +127,7 @@ class Ui_Calibrator(object):
         self.pBtn_Channel_3.setAccessibleName(_fromUtf8(""))
         self.pBtn_Channel_3.setAccessibleDescription(_fromUtf8(""))
         self.pBtn_Channel_3.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.pBtn_Channel_3.setStyleSheet(_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+        self.pBtn_Channel_3.setStyleSheet(_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 "background-color: rgb(114, 208, 244);"))
         self.pBtn_Channel_3.setText(_fromUtf8("Канал 3"))
         self.pBtn_Channel_3.setIconSize(QtCore.QSize(24, 24))
@@ -135,7 +137,7 @@ class Ui_Calibrator(object):
         self.pBtn_Channel_3.setObjectName(_fromUtf8("pBtn_Channel_3"))
         self.GroupChannel.addButton(self.pBtn_Channel_3)
         self.pBtn_Channel_4 = QtGui.QRadioButton(self.centralwidget)
-        self.pBtn_Channel_4.setGeometry(QtCore.QRect(10, 400, 141, 60))
+        self.pBtn_Channel_4.setGeometry(QtCore.QRect(10, 470, 141, 80))
         self.pBtn_Channel_4.setFocusPolicy(QtCore.Qt.NoFocus)
         self.pBtn_Channel_4.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.pBtn_Channel_4.setToolTip(_fromUtf8(""))
@@ -144,7 +146,7 @@ class Ui_Calibrator(object):
         self.pBtn_Channel_4.setAccessibleName(_fromUtf8(""))
         self.pBtn_Channel_4.setAccessibleDescription(_fromUtf8(""))
         self.pBtn_Channel_4.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.pBtn_Channel_4.setStyleSheet(_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+        self.pBtn_Channel_4.setStyleSheet(_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 "background-color: rgb(114, 208, 244);"))
         self.pBtn_Channel_4.setText(_fromUtf8("Канал 4"))
         self.pBtn_Channel_4.setIconSize(QtCore.QSize(24, 24))
@@ -154,7 +156,7 @@ class Ui_Calibrator(object):
         self.pBtn_Channel_4.setObjectName(_fromUtf8("pBtn_Channel_4"))
         self.GroupChannel.addButton(self.pBtn_Channel_4)
         self.pBtn_Channel_5 = QtGui.QRadioButton(self.centralwidget)
-        self.pBtn_Channel_5.setGeometry(QtCore.QRect(10, 470, 141, 60))
+        self.pBtn_Channel_5.setGeometry(QtCore.QRect(10, 560, 141, 80))
         self.pBtn_Channel_5.setFocusPolicy(QtCore.Qt.NoFocus)
         self.pBtn_Channel_5.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.pBtn_Channel_5.setToolTip(_fromUtf8(""))
@@ -163,7 +165,7 @@ class Ui_Calibrator(object):
         self.pBtn_Channel_5.setAccessibleName(_fromUtf8(""))
         self.pBtn_Channel_5.setAccessibleDescription(_fromUtf8(""))
         self.pBtn_Channel_5.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.pBtn_Channel_5.setStyleSheet(_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+        self.pBtn_Channel_5.setStyleSheet(_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 "background-color: rgb(114, 208, 244);"))
         self.pBtn_Channel_5.setText(_fromUtf8("Канал 5"))
         self.pBtn_Channel_5.setIconSize(QtCore.QSize(24, 24))
@@ -173,7 +175,7 @@ class Ui_Calibrator(object):
         self.pBtn_Channel_5.setObjectName(_fromUtf8("pBtn_Channel_5"))
         self.GroupChannel.addButton(self.pBtn_Channel_5)
         self.pBtn_Channel_6 = QtGui.QRadioButton(self.centralwidget)
-        self.pBtn_Channel_6.setGeometry(QtCore.QRect(10, 540, 140, 60))
+        self.pBtn_Channel_6.setGeometry(QtCore.QRect(10, 650, 141, 80))
         self.pBtn_Channel_6.setFocusPolicy(QtCore.Qt.NoFocus)
         self.pBtn_Channel_6.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.pBtn_Channel_6.setToolTip(_fromUtf8(""))
@@ -182,8 +184,7 @@ class Ui_Calibrator(object):
         self.pBtn_Channel_6.setAccessibleName(_fromUtf8(""))
         self.pBtn_Channel_6.setAccessibleDescription(_fromUtf8(""))
         self.pBtn_Channel_6.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.pBtn_Channel_6.setStyleSheet(_fromUtf8("border-style: outset;\n"
-"font: 18pt \"HelveticaNeueCyr\";\n"
+        self.pBtn_Channel_6.setStyleSheet(_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 "background-color: rgb(114, 208, 244);"))
         self.pBtn_Channel_6.setText(_fromUtf8("Канал 6"))
         self.pBtn_Channel_6.setIconSize(QtCore.QSize(24, 24))
@@ -194,7 +195,7 @@ class Ui_Calibrator(object):
         self.pBtn_Channel_6.setObjectName(_fromUtf8("pBtn_Channel_6"))
         self.GroupChannel.addButton(self.pBtn_Channel_6)
         self.lineEdit_1 = QtGui.QLineEdit(self.centralwidget)
-        self.lineEdit_1.setGeometry(QtCore.QRect(160, 190, 113, 60))
+        self.lineEdit_1.setGeometry(QtCore.QRect(160, 200, 113, 80))
         self.lineEdit_1.setFocusPolicy(QtCore.Qt.NoFocus)
         self.lineEdit_1.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.lineEdit_1.setToolTip(_fromUtf8(""))
@@ -202,7 +203,7 @@ class Ui_Calibrator(object):
         self.lineEdit_1.setWhatsThis(_fromUtf8(""))
         self.lineEdit_1.setAccessibleName(_fromUtf8(""))
         self.lineEdit_1.setAccessibleDescription(_fromUtf8(""))
-        self.lineEdit_1.setStyleSheet(_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+        self.lineEdit_1.setStyleSheet(_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 "background-color: rgb(114, 208, 244);"))
         self.lineEdit_1.setInputMask(_fromUtf8(""))
         self.lineEdit_1.setText(_fromUtf8(""))
@@ -212,7 +213,7 @@ class Ui_Calibrator(object):
         self.lineEdit_1.setPlaceholderText(_fromUtf8(""))
         self.lineEdit_1.setObjectName(_fromUtf8("lineEdit_1"))
         self.lineEdit_2 = QtGui.QLineEdit(self.centralwidget)
-        self.lineEdit_2.setGeometry(QtCore.QRect(280, 190, 113, 60))
+        self.lineEdit_2.setGeometry(QtCore.QRect(280, 200, 113, 80))
         self.lineEdit_2.setFocusPolicy(QtCore.Qt.NoFocus)
         self.lineEdit_2.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.lineEdit_2.setToolTip(_fromUtf8(""))
@@ -220,7 +221,7 @@ class Ui_Calibrator(object):
         self.lineEdit_2.setWhatsThis(_fromUtf8(""))
         self.lineEdit_2.setAccessibleName(_fromUtf8(""))
         self.lineEdit_2.setAccessibleDescription(_fromUtf8(""))
-        self.lineEdit_2.setStyleSheet(_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+        self.lineEdit_2.setStyleSheet(_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 "background-color: rgb(114, 208, 244);"))
         self.lineEdit_2.setInputMask(_fromUtf8(""))
         self.lineEdit_2.setText(_fromUtf8(""))
@@ -230,7 +231,7 @@ class Ui_Calibrator(object):
         self.lineEdit_2.setPlaceholderText(_fromUtf8(""))
         self.lineEdit_2.setObjectName(_fromUtf8("lineEdit_2"))
         self.lineEdit_3 = QtGui.QLineEdit(self.centralwidget)
-        self.lineEdit_3.setGeometry(QtCore.QRect(400, 190, 113, 60))
+        self.lineEdit_3.setGeometry(QtCore.QRect(400, 200, 113, 80))
         self.lineEdit_3.setFocusPolicy(QtCore.Qt.NoFocus)
         self.lineEdit_3.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.lineEdit_3.setToolTip(_fromUtf8(""))
@@ -238,7 +239,7 @@ class Ui_Calibrator(object):
         self.lineEdit_3.setWhatsThis(_fromUtf8(""))
         self.lineEdit_3.setAccessibleName(_fromUtf8(""))
         self.lineEdit_3.setAccessibleDescription(_fromUtf8(""))
-        self.lineEdit_3.setStyleSheet(_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+        self.lineEdit_3.setStyleSheet(_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 "background-color: rgb(114, 208, 244);"))
         self.lineEdit_3.setInputMask(_fromUtf8(""))
         self.lineEdit_3.setText(_fromUtf8(""))
@@ -248,7 +249,7 @@ class Ui_Calibrator(object):
         self.lineEdit_3.setPlaceholderText(_fromUtf8(""))
         self.lineEdit_3.setObjectName(_fromUtf8("lineEdit_3"))
         self.lineEdit_4 = QtGui.QLineEdit(self.centralwidget)
-        self.lineEdit_4.setGeometry(QtCore.QRect(520, 190, 113, 60))
+        self.lineEdit_4.setGeometry(QtCore.QRect(520, 200, 113, 80))
         self.lineEdit_4.setFocusPolicy(QtCore.Qt.NoFocus)
         self.lineEdit_4.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.lineEdit_4.setToolTip(_fromUtf8(""))
@@ -256,7 +257,7 @@ class Ui_Calibrator(object):
         self.lineEdit_4.setWhatsThis(_fromUtf8(""))
         self.lineEdit_4.setAccessibleName(_fromUtf8(""))
         self.lineEdit_4.setAccessibleDescription(_fromUtf8(""))
-        self.lineEdit_4.setStyleSheet(_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+        self.lineEdit_4.setStyleSheet(_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 "background-color: rgb(114, 208, 244);"))
         self.lineEdit_4.setInputMask(_fromUtf8(""))
         self.lineEdit_4.setText(_fromUtf8(""))
@@ -266,7 +267,7 @@ class Ui_Calibrator(object):
         self.lineEdit_4.setPlaceholderText(_fromUtf8(""))
         self.lineEdit_4.setObjectName(_fromUtf8("lineEdit_4"))
         self.lineEdit_5 = QtGui.QLineEdit(self.centralwidget)
-        self.lineEdit_5.setGeometry(QtCore.QRect(160, 260, 113, 60))
+        self.lineEdit_5.setGeometry(QtCore.QRect(160, 290, 113, 80))
         self.lineEdit_5.setFocusPolicy(QtCore.Qt.NoFocus)
         self.lineEdit_5.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.lineEdit_5.setToolTip(_fromUtf8(""))
@@ -274,7 +275,7 @@ class Ui_Calibrator(object):
         self.lineEdit_5.setWhatsThis(_fromUtf8(""))
         self.lineEdit_5.setAccessibleName(_fromUtf8(""))
         self.lineEdit_5.setAccessibleDescription(_fromUtf8(""))
-        self.lineEdit_5.setStyleSheet(_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+        self.lineEdit_5.setStyleSheet(_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 "background-color: rgb(114, 208, 244);"))
         self.lineEdit_5.setInputMask(_fromUtf8(""))
         self.lineEdit_5.setText(_fromUtf8(""))
@@ -284,7 +285,7 @@ class Ui_Calibrator(object):
         self.lineEdit_5.setPlaceholderText(_fromUtf8(""))
         self.lineEdit_5.setObjectName(_fromUtf8("lineEdit_5"))
         self.lineEdit_6 = QtGui.QLineEdit(self.centralwidget)
-        self.lineEdit_6.setGeometry(QtCore.QRect(280, 260, 113, 60))
+        self.lineEdit_6.setGeometry(QtCore.QRect(280, 290, 113, 80))
         self.lineEdit_6.setFocusPolicy(QtCore.Qt.NoFocus)
         self.lineEdit_6.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.lineEdit_6.setToolTip(_fromUtf8(""))
@@ -292,7 +293,7 @@ class Ui_Calibrator(object):
         self.lineEdit_6.setWhatsThis(_fromUtf8(""))
         self.lineEdit_6.setAccessibleName(_fromUtf8(""))
         self.lineEdit_6.setAccessibleDescription(_fromUtf8(""))
-        self.lineEdit_6.setStyleSheet(_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+        self.lineEdit_6.setStyleSheet(_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 "background-color: rgb(114, 208, 244);"))
         self.lineEdit_6.setInputMask(_fromUtf8(""))
         self.lineEdit_6.setText(_fromUtf8(""))
@@ -302,7 +303,7 @@ class Ui_Calibrator(object):
         self.lineEdit_6.setPlaceholderText(_fromUtf8(""))
         self.lineEdit_6.setObjectName(_fromUtf8("lineEdit_6"))
         self.lineEdit_7 = QtGui.QLineEdit(self.centralwidget)
-        self.lineEdit_7.setGeometry(QtCore.QRect(400, 260, 113, 60))
+        self.lineEdit_7.setGeometry(QtCore.QRect(400, 290, 113, 80))
         self.lineEdit_7.setFocusPolicy(QtCore.Qt.NoFocus)
         self.lineEdit_7.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.lineEdit_7.setToolTip(_fromUtf8(""))
@@ -310,7 +311,7 @@ class Ui_Calibrator(object):
         self.lineEdit_7.setWhatsThis(_fromUtf8(""))
         self.lineEdit_7.setAccessibleName(_fromUtf8(""))
         self.lineEdit_7.setAccessibleDescription(_fromUtf8(""))
-        self.lineEdit_7.setStyleSheet(_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+        self.lineEdit_7.setStyleSheet(_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 "background-color: rgb(114, 208, 244);"))
         self.lineEdit_7.setInputMask(_fromUtf8(""))
         self.lineEdit_7.setText(_fromUtf8(""))
@@ -320,7 +321,7 @@ class Ui_Calibrator(object):
         self.lineEdit_7.setPlaceholderText(_fromUtf8(""))
         self.lineEdit_7.setObjectName(_fromUtf8("lineEdit_7"))
         self.lineEdit_8 = QtGui.QLineEdit(self.centralwidget)
-        self.lineEdit_8.setGeometry(QtCore.QRect(520, 260, 113, 60))
+        self.lineEdit_8.setGeometry(QtCore.QRect(520, 290, 113, 80))
         self.lineEdit_8.setFocusPolicy(QtCore.Qt.NoFocus)
         self.lineEdit_8.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.lineEdit_8.setToolTip(_fromUtf8(""))
@@ -328,7 +329,7 @@ class Ui_Calibrator(object):
         self.lineEdit_8.setWhatsThis(_fromUtf8(""))
         self.lineEdit_8.setAccessibleName(_fromUtf8(""))
         self.lineEdit_8.setAccessibleDescription(_fromUtf8(""))
-        self.lineEdit_8.setStyleSheet(_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+        self.lineEdit_8.setStyleSheet(_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 "background-color: rgb(114, 208, 244);"))
         self.lineEdit_8.setInputMask(_fromUtf8(""))
         self.lineEdit_8.setText(_fromUtf8(""))
@@ -338,7 +339,7 @@ class Ui_Calibrator(object):
         self.lineEdit_8.setPlaceholderText(_fromUtf8(""))
         self.lineEdit_8.setObjectName(_fromUtf8("lineEdit_8"))
         self.lineEdit_9 = QtGui.QLineEdit(self.centralwidget)
-        self.lineEdit_9.setGeometry(QtCore.QRect(160, 330, 113, 60))
+        self.lineEdit_9.setGeometry(QtCore.QRect(160, 380, 113, 80))
         self.lineEdit_9.setFocusPolicy(QtCore.Qt.NoFocus)
         self.lineEdit_9.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.lineEdit_9.setToolTip(_fromUtf8(""))
@@ -346,7 +347,7 @@ class Ui_Calibrator(object):
         self.lineEdit_9.setWhatsThis(_fromUtf8(""))
         self.lineEdit_9.setAccessibleName(_fromUtf8(""))
         self.lineEdit_9.setAccessibleDescription(_fromUtf8(""))
-        self.lineEdit_9.setStyleSheet(_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+        self.lineEdit_9.setStyleSheet(_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 "background-color: rgb(114, 208, 244);"))
         self.lineEdit_9.setInputMask(_fromUtf8(""))
         self.lineEdit_9.setText(_fromUtf8(""))
@@ -356,7 +357,7 @@ class Ui_Calibrator(object):
         self.lineEdit_9.setPlaceholderText(_fromUtf8(""))
         self.lineEdit_9.setObjectName(_fromUtf8("lineEdit_9"))
         self.lineEdit_10 = QtGui.QLineEdit(self.centralwidget)
-        self.lineEdit_10.setGeometry(QtCore.QRect(280, 330, 113, 60))
+        self.lineEdit_10.setGeometry(QtCore.QRect(280, 380, 113, 80))
         self.lineEdit_10.setFocusPolicy(QtCore.Qt.NoFocus)
         self.lineEdit_10.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.lineEdit_10.setToolTip(_fromUtf8(""))
@@ -364,7 +365,7 @@ class Ui_Calibrator(object):
         self.lineEdit_10.setWhatsThis(_fromUtf8(""))
         self.lineEdit_10.setAccessibleName(_fromUtf8(""))
         self.lineEdit_10.setAccessibleDescription(_fromUtf8(""))
-        self.lineEdit_10.setStyleSheet(_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+        self.lineEdit_10.setStyleSheet(_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 "background-color: rgb(114, 208, 244);"))
         self.lineEdit_10.setInputMask(_fromUtf8(""))
         self.lineEdit_10.setText(_fromUtf8(""))
@@ -374,7 +375,7 @@ class Ui_Calibrator(object):
         self.lineEdit_10.setPlaceholderText(_fromUtf8(""))
         self.lineEdit_10.setObjectName(_fromUtf8("lineEdit_10"))
         self.lineEdit_11 = QtGui.QLineEdit(self.centralwidget)
-        self.lineEdit_11.setGeometry(QtCore.QRect(400, 330, 113, 60))
+        self.lineEdit_11.setGeometry(QtCore.QRect(400, 380, 113, 80))
         self.lineEdit_11.setFocusPolicy(QtCore.Qt.NoFocus)
         self.lineEdit_11.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.lineEdit_11.setToolTip(_fromUtf8(""))
@@ -382,7 +383,7 @@ class Ui_Calibrator(object):
         self.lineEdit_11.setWhatsThis(_fromUtf8(""))
         self.lineEdit_11.setAccessibleName(_fromUtf8(""))
         self.lineEdit_11.setAccessibleDescription(_fromUtf8(""))
-        self.lineEdit_11.setStyleSheet(_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+        self.lineEdit_11.setStyleSheet(_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 "background-color: rgb(114, 208, 244);"))
         self.lineEdit_11.setInputMask(_fromUtf8(""))
         self.lineEdit_11.setText(_fromUtf8(""))
@@ -392,7 +393,7 @@ class Ui_Calibrator(object):
         self.lineEdit_11.setPlaceholderText(_fromUtf8(""))
         self.lineEdit_11.setObjectName(_fromUtf8("lineEdit_11"))
         self.lineEdit_12 = QtGui.QLineEdit(self.centralwidget)
-        self.lineEdit_12.setGeometry(QtCore.QRect(520, 330, 113, 60))
+        self.lineEdit_12.setGeometry(QtCore.QRect(520, 380, 113, 80))
         self.lineEdit_12.setFocusPolicy(QtCore.Qt.NoFocus)
         self.lineEdit_12.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.lineEdit_12.setToolTip(_fromUtf8(""))
@@ -400,7 +401,7 @@ class Ui_Calibrator(object):
         self.lineEdit_12.setWhatsThis(_fromUtf8(""))
         self.lineEdit_12.setAccessibleName(_fromUtf8(""))
         self.lineEdit_12.setAccessibleDescription(_fromUtf8(""))
-        self.lineEdit_12.setStyleSheet(_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+        self.lineEdit_12.setStyleSheet(_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 "background-color: rgb(114, 208, 244);"))
         self.lineEdit_12.setInputMask(_fromUtf8(""))
         self.lineEdit_12.setText(_fromUtf8(""))
@@ -410,7 +411,7 @@ class Ui_Calibrator(object):
         self.lineEdit_12.setPlaceholderText(_fromUtf8(""))
         self.lineEdit_12.setObjectName(_fromUtf8("lineEdit_12"))
         self.lineEdit_13 = QtGui.QLineEdit(self.centralwidget)
-        self.lineEdit_13.setGeometry(QtCore.QRect(160, 400, 113, 60))
+        self.lineEdit_13.setGeometry(QtCore.QRect(160, 470, 113, 80))
         self.lineEdit_13.setFocusPolicy(QtCore.Qt.NoFocus)
         self.lineEdit_13.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.lineEdit_13.setToolTip(_fromUtf8(""))
@@ -418,7 +419,7 @@ class Ui_Calibrator(object):
         self.lineEdit_13.setWhatsThis(_fromUtf8(""))
         self.lineEdit_13.setAccessibleName(_fromUtf8(""))
         self.lineEdit_13.setAccessibleDescription(_fromUtf8(""))
-        self.lineEdit_13.setStyleSheet(_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+        self.lineEdit_13.setStyleSheet(_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 "background-color: rgb(114, 208, 244);"))
         self.lineEdit_13.setInputMask(_fromUtf8(""))
         self.lineEdit_13.setText(_fromUtf8(""))
@@ -428,7 +429,7 @@ class Ui_Calibrator(object):
         self.lineEdit_13.setPlaceholderText(_fromUtf8(""))
         self.lineEdit_13.setObjectName(_fromUtf8("lineEdit_13"))
         self.lineEdit_14 = QtGui.QLineEdit(self.centralwidget)
-        self.lineEdit_14.setGeometry(QtCore.QRect(280, 400, 113, 60))
+        self.lineEdit_14.setGeometry(QtCore.QRect(280, 470, 113, 80))
         self.lineEdit_14.setFocusPolicy(QtCore.Qt.NoFocus)
         self.lineEdit_14.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.lineEdit_14.setToolTip(_fromUtf8(""))
@@ -436,7 +437,7 @@ class Ui_Calibrator(object):
         self.lineEdit_14.setWhatsThis(_fromUtf8(""))
         self.lineEdit_14.setAccessibleName(_fromUtf8(""))
         self.lineEdit_14.setAccessibleDescription(_fromUtf8(""))
-        self.lineEdit_14.setStyleSheet(_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+        self.lineEdit_14.setStyleSheet(_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 "background-color: rgb(114, 208, 244);"))
         self.lineEdit_14.setInputMask(_fromUtf8(""))
         self.lineEdit_14.setText(_fromUtf8(""))
@@ -446,7 +447,7 @@ class Ui_Calibrator(object):
         self.lineEdit_14.setPlaceholderText(_fromUtf8(""))
         self.lineEdit_14.setObjectName(_fromUtf8("lineEdit_14"))
         self.lineEdit_15 = QtGui.QLineEdit(self.centralwidget)
-        self.lineEdit_15.setGeometry(QtCore.QRect(400, 400, 113, 60))
+        self.lineEdit_15.setGeometry(QtCore.QRect(400, 470, 113, 80))
         self.lineEdit_15.setFocusPolicy(QtCore.Qt.NoFocus)
         self.lineEdit_15.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.lineEdit_15.setToolTip(_fromUtf8(""))
@@ -454,7 +455,7 @@ class Ui_Calibrator(object):
         self.lineEdit_15.setWhatsThis(_fromUtf8(""))
         self.lineEdit_15.setAccessibleName(_fromUtf8(""))
         self.lineEdit_15.setAccessibleDescription(_fromUtf8(""))
-        self.lineEdit_15.setStyleSheet(_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+        self.lineEdit_15.setStyleSheet(_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 "background-color: rgb(114, 208, 244);"))
         self.lineEdit_15.setInputMask(_fromUtf8(""))
         self.lineEdit_15.setText(_fromUtf8(""))
@@ -464,7 +465,7 @@ class Ui_Calibrator(object):
         self.lineEdit_15.setPlaceholderText(_fromUtf8(""))
         self.lineEdit_15.setObjectName(_fromUtf8("lineEdit_15"))
         self.lineEdit_16 = QtGui.QLineEdit(self.centralwidget)
-        self.lineEdit_16.setGeometry(QtCore.QRect(520, 400, 113, 60))
+        self.lineEdit_16.setGeometry(QtCore.QRect(520, 470, 113, 80))
         self.lineEdit_16.setFocusPolicy(QtCore.Qt.NoFocus)
         self.lineEdit_16.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.lineEdit_16.setToolTip(_fromUtf8(""))
@@ -472,7 +473,7 @@ class Ui_Calibrator(object):
         self.lineEdit_16.setWhatsThis(_fromUtf8(""))
         self.lineEdit_16.setAccessibleName(_fromUtf8(""))
         self.lineEdit_16.setAccessibleDescription(_fromUtf8(""))
-        self.lineEdit_16.setStyleSheet(_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+        self.lineEdit_16.setStyleSheet(_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 "background-color: rgb(114, 208, 244);"))
         self.lineEdit_16.setInputMask(_fromUtf8(""))
         self.lineEdit_16.setText(_fromUtf8(""))
@@ -482,7 +483,7 @@ class Ui_Calibrator(object):
         self.lineEdit_16.setPlaceholderText(_fromUtf8(""))
         self.lineEdit_16.setObjectName(_fromUtf8("lineEdit_16"))
         self.lineEdit_17 = QtGui.QLineEdit(self.centralwidget)
-        self.lineEdit_17.setGeometry(QtCore.QRect(160, 470, 113, 60))
+        self.lineEdit_17.setGeometry(QtCore.QRect(160, 560, 113, 80))
         self.lineEdit_17.setFocusPolicy(QtCore.Qt.NoFocus)
         self.lineEdit_17.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.lineEdit_17.setToolTip(_fromUtf8(""))
@@ -490,7 +491,7 @@ class Ui_Calibrator(object):
         self.lineEdit_17.setWhatsThis(_fromUtf8(""))
         self.lineEdit_17.setAccessibleName(_fromUtf8(""))
         self.lineEdit_17.setAccessibleDescription(_fromUtf8(""))
-        self.lineEdit_17.setStyleSheet(_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+        self.lineEdit_17.setStyleSheet(_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 "background-color: rgb(114, 208, 244);"))
         self.lineEdit_17.setInputMask(_fromUtf8(""))
         self.lineEdit_17.setText(_fromUtf8(""))
@@ -500,7 +501,7 @@ class Ui_Calibrator(object):
         self.lineEdit_17.setPlaceholderText(_fromUtf8(""))
         self.lineEdit_17.setObjectName(_fromUtf8("lineEdit_17"))
         self.lineEdit_18 = QtGui.QLineEdit(self.centralwidget)
-        self.lineEdit_18.setGeometry(QtCore.QRect(280, 470, 113, 60))
+        self.lineEdit_18.setGeometry(QtCore.QRect(280, 560, 113, 80))
         self.lineEdit_18.setFocusPolicy(QtCore.Qt.NoFocus)
         self.lineEdit_18.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.lineEdit_18.setToolTip(_fromUtf8(""))
@@ -508,7 +509,7 @@ class Ui_Calibrator(object):
         self.lineEdit_18.setWhatsThis(_fromUtf8(""))
         self.lineEdit_18.setAccessibleName(_fromUtf8(""))
         self.lineEdit_18.setAccessibleDescription(_fromUtf8(""))
-        self.lineEdit_18.setStyleSheet(_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+        self.lineEdit_18.setStyleSheet(_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 "background-color: rgb(114, 208, 244);"))
         self.lineEdit_18.setInputMask(_fromUtf8(""))
         self.lineEdit_18.setText(_fromUtf8(""))
@@ -518,7 +519,7 @@ class Ui_Calibrator(object):
         self.lineEdit_18.setPlaceholderText(_fromUtf8(""))
         self.lineEdit_18.setObjectName(_fromUtf8("lineEdit_18"))
         self.lineEdit_19 = QtGui.QLineEdit(self.centralwidget)
-        self.lineEdit_19.setGeometry(QtCore.QRect(400, 470, 113, 60))
+        self.lineEdit_19.setGeometry(QtCore.QRect(400, 560, 113, 80))
         self.lineEdit_19.setFocusPolicy(QtCore.Qt.NoFocus)
         self.lineEdit_19.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.lineEdit_19.setToolTip(_fromUtf8(""))
@@ -526,7 +527,7 @@ class Ui_Calibrator(object):
         self.lineEdit_19.setWhatsThis(_fromUtf8(""))
         self.lineEdit_19.setAccessibleName(_fromUtf8(""))
         self.lineEdit_19.setAccessibleDescription(_fromUtf8(""))
-        self.lineEdit_19.setStyleSheet(_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+        self.lineEdit_19.setStyleSheet(_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 "background-color: rgb(114, 208, 244);"))
         self.lineEdit_19.setInputMask(_fromUtf8(""))
         self.lineEdit_19.setText(_fromUtf8(""))
@@ -536,7 +537,7 @@ class Ui_Calibrator(object):
         self.lineEdit_19.setPlaceholderText(_fromUtf8(""))
         self.lineEdit_19.setObjectName(_fromUtf8("lineEdit_19"))
         self.lineEdit_20 = QtGui.QLineEdit(self.centralwidget)
-        self.lineEdit_20.setGeometry(QtCore.QRect(520, 470, 113, 60))
+        self.lineEdit_20.setGeometry(QtCore.QRect(520, 560, 113, 80))
         self.lineEdit_20.setFocusPolicy(QtCore.Qt.NoFocus)
         self.lineEdit_20.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.lineEdit_20.setToolTip(_fromUtf8(""))
@@ -544,7 +545,7 @@ class Ui_Calibrator(object):
         self.lineEdit_20.setWhatsThis(_fromUtf8(""))
         self.lineEdit_20.setAccessibleName(_fromUtf8(""))
         self.lineEdit_20.setAccessibleDescription(_fromUtf8(""))
-        self.lineEdit_20.setStyleSheet(_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+        self.lineEdit_20.setStyleSheet(_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 "background-color: rgb(114, 208, 244);"))
         self.lineEdit_20.setInputMask(_fromUtf8(""))
         self.lineEdit_20.setText(_fromUtf8(""))
@@ -554,7 +555,7 @@ class Ui_Calibrator(object):
         self.lineEdit_20.setPlaceholderText(_fromUtf8(""))
         self.lineEdit_20.setObjectName(_fromUtf8("lineEdit_20"))
         self.lineEdit_21 = QtGui.QLineEdit(self.centralwidget)
-        self.lineEdit_21.setGeometry(QtCore.QRect(160, 540, 113, 60))
+        self.lineEdit_21.setGeometry(QtCore.QRect(160, 650, 113, 80))
         self.lineEdit_21.setFocusPolicy(QtCore.Qt.NoFocus)
         self.lineEdit_21.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.lineEdit_21.setToolTip(_fromUtf8(""))
@@ -562,7 +563,7 @@ class Ui_Calibrator(object):
         self.lineEdit_21.setWhatsThis(_fromUtf8(""))
         self.lineEdit_21.setAccessibleName(_fromUtf8(""))
         self.lineEdit_21.setAccessibleDescription(_fromUtf8(""))
-        self.lineEdit_21.setStyleSheet(_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+        self.lineEdit_21.setStyleSheet(_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 "background-color: rgb(114, 208, 244);"))
         self.lineEdit_21.setInputMask(_fromUtf8(""))
         self.lineEdit_21.setText(_fromUtf8(""))
@@ -572,7 +573,7 @@ class Ui_Calibrator(object):
         self.lineEdit_21.setPlaceholderText(_fromUtf8(""))
         self.lineEdit_21.setObjectName(_fromUtf8("lineEdit_21"))
         self.lineEdit_22 = QtGui.QLineEdit(self.centralwidget)
-        self.lineEdit_22.setGeometry(QtCore.QRect(280, 540, 113, 60))
+        self.lineEdit_22.setGeometry(QtCore.QRect(280, 650, 113, 80))
         self.lineEdit_22.setFocusPolicy(QtCore.Qt.NoFocus)
         self.lineEdit_22.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.lineEdit_22.setToolTip(_fromUtf8(""))
@@ -580,7 +581,7 @@ class Ui_Calibrator(object):
         self.lineEdit_22.setWhatsThis(_fromUtf8(""))
         self.lineEdit_22.setAccessibleName(_fromUtf8(""))
         self.lineEdit_22.setAccessibleDescription(_fromUtf8(""))
-        self.lineEdit_22.setStyleSheet(_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+        self.lineEdit_22.setStyleSheet(_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 "background-color: rgb(114, 208, 244);"))
         self.lineEdit_22.setInputMask(_fromUtf8(""))
         self.lineEdit_22.setText(_fromUtf8(""))
@@ -590,7 +591,7 @@ class Ui_Calibrator(object):
         self.lineEdit_22.setPlaceholderText(_fromUtf8(""))
         self.lineEdit_22.setObjectName(_fromUtf8("lineEdit_22"))
         self.lineEdit_23 = QtGui.QLineEdit(self.centralwidget)
-        self.lineEdit_23.setGeometry(QtCore.QRect(400, 540, 113, 60))
+        self.lineEdit_23.setGeometry(QtCore.QRect(400, 650, 113, 80))
         self.lineEdit_23.setFocusPolicy(QtCore.Qt.NoFocus)
         self.lineEdit_23.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.lineEdit_23.setToolTip(_fromUtf8(""))
@@ -598,7 +599,7 @@ class Ui_Calibrator(object):
         self.lineEdit_23.setWhatsThis(_fromUtf8(""))
         self.lineEdit_23.setAccessibleName(_fromUtf8(""))
         self.lineEdit_23.setAccessibleDescription(_fromUtf8(""))
-        self.lineEdit_23.setStyleSheet(_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+        self.lineEdit_23.setStyleSheet(_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 "background-color: rgb(114, 208, 244);"))
         self.lineEdit_23.setInputMask(_fromUtf8(""))
         self.lineEdit_23.setText(_fromUtf8(""))
@@ -608,7 +609,7 @@ class Ui_Calibrator(object):
         self.lineEdit_23.setPlaceholderText(_fromUtf8(""))
         self.lineEdit_23.setObjectName(_fromUtf8("lineEdit_23"))
         self.lineEdit_24 = QtGui.QLineEdit(self.centralwidget)
-        self.lineEdit_24.setGeometry(QtCore.QRect(520, 540, 113, 60))
+        self.lineEdit_24.setGeometry(QtCore.QRect(520, 650, 113, 80))
         self.lineEdit_24.setFocusPolicy(QtCore.Qt.NoFocus)
         self.lineEdit_24.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.lineEdit_24.setToolTip(_fromUtf8(""))
@@ -616,7 +617,7 @@ class Ui_Calibrator(object):
         self.lineEdit_24.setWhatsThis(_fromUtf8(""))
         self.lineEdit_24.setAccessibleName(_fromUtf8(""))
         self.lineEdit_24.setAccessibleDescription(_fromUtf8(""))
-        self.lineEdit_24.setStyleSheet(_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+        self.lineEdit_24.setStyleSheet(_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 "background-color: rgb(114, 208, 244);"))
         self.lineEdit_24.setInputMask(_fromUtf8(""))
         self.lineEdit_24.setText(_fromUtf8(""))
@@ -625,43 +626,67 @@ class Ui_Calibrator(object):
         self.lineEdit_24.setReadOnly(True)
         self.lineEdit_24.setPlaceholderText(_fromUtf8(""))
         self.lineEdit_24.setObjectName(_fromUtf8("lineEdit_24"))
-        self.R100 = QtGui.QRadioButton(self.centralwidget)
-        self.R100.setGeometry(QtCore.QRect(160, 120, 113, 60))
-        self.R100.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.R100.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
-        self.R100.setStyleSheet(_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+        self.R0 = QtGui.QRadioButton(self.centralwidget)
+        self.R0.setGeometry(QtCore.QRect(160, 110, 113, 80))
+        self.R0.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.R0.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
+        self.R0.setToolTip(_fromUtf8(""))
+        self.R0.setStatusTip(_fromUtf8(""))
+        self.R0.setWhatsThis(_fromUtf8(""))
+        self.R0.setAccessibleName(_fromUtf8(""))
+        self.R0.setAccessibleDescription(_fromUtf8(""))
+        self.R0.setStyleSheet(_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 "background-color: rgb(114, 208, 244);"))
-        self.R100.setChecked(True)
-        self.R100.setObjectName(_fromUtf8("R100"))
+        self.R0.setText(_fromUtf8("100 Ω"))
+        self.R0.setChecked(True)
+        self.R0.setObjectName(_fromUtf8("R0"))
         self.GroupResistance = QtGui.QButtonGroup(Calibrator)
         self.GroupResistance.setObjectName(_fromUtf8("GroupResistance"))
-        self.GroupResistance.addButton(self.R100)
-        self.R166 = QtGui.QRadioButton(self.centralwidget)
-        self.R166.setGeometry(QtCore.QRect(280, 120, 113, 60))
-        self.R166.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.R166.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
-        self.R166.setStyleSheet(_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+        self.GroupResistance.addButton(self.R0)
+        self.R1 = QtGui.QRadioButton(self.centralwidget)
+        self.R1.setGeometry(QtCore.QRect(280, 110, 113, 80))
+        self.R1.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.R1.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
+        self.R1.setToolTip(_fromUtf8(""))
+        self.R1.setStatusTip(_fromUtf8(""))
+        self.R1.setWhatsThis(_fromUtf8(""))
+        self.R1.setAccessibleName(_fromUtf8(""))
+        self.R1.setAccessibleDescription(_fromUtf8(""))
+        self.R1.setStyleSheet(_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 "background-color: rgb(114, 208, 244);"))
-        self.R166.setObjectName(_fromUtf8("R166"))
-        self.GroupResistance.addButton(self.R166)
-        self.R200 = QtGui.QRadioButton(self.centralwidget)
-        self.R200.setGeometry(QtCore.QRect(400, 120, 113, 60))
-        self.R200.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.R200.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
-        self.R200.setStyleSheet(_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+        self.R1.setText(_fromUtf8("166 Ω"))
+        self.R1.setObjectName(_fromUtf8("R1"))
+        self.GroupResistance.addButton(self.R1)
+        self.R2 = QtGui.QRadioButton(self.centralwidget)
+        self.R2.setGeometry(QtCore.QRect(400, 110, 113, 80))
+        self.R2.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.R2.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
+        self.R2.setToolTip(_fromUtf8(""))
+        self.R2.setStatusTip(_fromUtf8(""))
+        self.R2.setWhatsThis(_fromUtf8(""))
+        self.R2.setAccessibleName(_fromUtf8(""))
+        self.R2.setAccessibleDescription(_fromUtf8(""))
+        self.R2.setStyleSheet(_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 "background-color: rgb(114, 208, 244);"))
-        self.R200.setObjectName(_fromUtf8("R200"))
-        self.GroupResistance.addButton(self.R200)
-        self.R300 = QtGui.QRadioButton(self.centralwidget)
-        self.R300.setGeometry(QtCore.QRect(520, 120, 113, 60))
-        self.R300.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.R300.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
-        self.R300.setStyleSheet(_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+        self.R2.setText(_fromUtf8("200 Ω"))
+        self.R2.setObjectName(_fromUtf8("R2"))
+        self.GroupResistance.addButton(self.R2)
+        self.R3 = QtGui.QRadioButton(self.centralwidget)
+        self.R3.setGeometry(QtCore.QRect(520, 110, 113, 80))
+        self.R3.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.R3.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
+        self.R3.setToolTip(_fromUtf8(""))
+        self.R3.setStatusTip(_fromUtf8(""))
+        self.R3.setWhatsThis(_fromUtf8(""))
+        self.R3.setAccessibleName(_fromUtf8(""))
+        self.R3.setAccessibleDescription(_fromUtf8(""))
+        self.R3.setStyleSheet(_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 "background-color: rgb(114, 208, 244);"))
-        self.R300.setObjectName(_fromUtf8("R300"))
-        self.GroupResistance.addButton(self.R300)
+        self.R3.setText(_fromUtf8("300 Ω"))
+        self.R3.setObjectName(_fromUtf8("R3"))
+        self.GroupResistance.addButton(self.R3)
         self.pushButton_2 = QtGui.QPushButton(self.centralwidget)
-        self.pushButton_2.setGeometry(QtCore.QRect(90, 610, 150, 150))
+        self.pushButton_2.setGeometry(QtCore.QRect(90, 750, 150, 150))
         self.pushButton_2.setFocusPolicy(QtCore.Qt.NoFocus)
         self.pushButton_2.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.pushButton_2.setToolTip(_fromUtf8(""))
@@ -670,16 +695,16 @@ class Ui_Calibrator(object):
         self.pushButton_2.setAccessibleName(_fromUtf8(""))
         self.pushButton_2.setAccessibleDescription(_fromUtf8(""))
         self.pushButton_2.setStyleSheet(_fromUtf8("border-style: outset;\n"
-"font: 16pt \"Free Helvetian\";\n"
+"font: 18pt \"HelveticaNeueCyr\";\n"
 "color:black;\n"
 " text-align: center;\n"
 " background-color: rgb(194, 194, 194);\n"
 ""))
         self.pushButton_2.setText(_fromUtf8("Записать\n"
-" значение"))
+"значение"))
         self.pushButton_2.setObjectName(_fromUtf8("pushButton_2"))
         self.pushButton_3 = QtGui.QPushButton(self.centralwidget)
-        self.pushButton_3.setGeometry(QtCore.QRect(250, 610, 150, 150))
+        self.pushButton_3.setGeometry(QtCore.QRect(250, 750, 150, 150))
         self.pushButton_3.setFocusPolicy(QtCore.Qt.NoFocus)
         self.pushButton_3.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.pushButton_3.setToolTip(_fromUtf8(""))
@@ -688,18 +713,24 @@ class Ui_Calibrator(object):
         self.pushButton_3.setAccessibleName(_fromUtf8(""))
         self.pushButton_3.setAccessibleDescription(_fromUtf8(""))
         self.pushButton_3.setStyleSheet(_fromUtf8("border-style: outset;\n"
-"font: 16pt \"Free Helvetian\";\n"
+"font: 18pt \"HelveticaNeueCyr\";\n"
 "color:black;\n"
 " text-align: center;\n"
 " background-color: rgb(194, 194, 194);\n"
 ""))
         self.pushButton_3.setText(_fromUtf8("Посчитать\n"
-" калибровку"))
+"калибровку"))
         self.pushButton_3.setObjectName(_fromUtf8("pushButton_3"))
         self.label = QtGui.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(10, 120, 141, 60))
-        self.label.setStyleSheet(_fromUtf8("font: 18pt \"HelveticaNeueCyr\";\n"
+        self.label.setGeometry(QtCore.QRect(10, 110, 141, 80))
+        self.label.setToolTip(_fromUtf8(""))
+        self.label.setStatusTip(_fromUtf8(""))
+        self.label.setWhatsThis(_fromUtf8(""))
+        self.label.setAccessibleName(_fromUtf8(""))
+        self.label.setAccessibleDescription(_fromUtf8(""))
+        self.label.setStyleSheet(_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 "background-color: rgb(114, 208, 244);"))
+        self.label.setText(_fromUtf8("Резистор Канал"))
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setWordWrap(True)
         self.label.setObjectName(_fromUtf8("label"))
@@ -709,10 +740,5 @@ class Ui_Calibrator(object):
         QtCore.QMetaObject.connectSlotsByName(Calibrator)
 
     def retranslateUi(self, Calibrator):
-        Calibrator.setWindowTitle(_translate("Calibrator", "Form1", None))
-        self.R100.setText(_translate("Calibrator", "100 Ω", None))
-        self.R166.setText(_translate("Calibrator", "166 Ω", None))
-        self.R200.setText(_translate("Calibrator", "200 Ω", None))
-        self.R300.setText(_translate("Calibrator", "300 Ω", None))
-        self.label.setText(_translate("Calibrator", "Резистор Канал", None))
+        pass
 

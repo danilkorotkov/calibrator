@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import numpy
-import sys, spidev, os, time, string
+import sys, spidev, os, time, string, csv
 from PyQt4 import QtCore, QtGui, uic 
 from PyQt4.Qt import Qt
 from PyQt4.QtGui import *
@@ -42,7 +42,7 @@ class TempThread(QtCore.QThread): # работа с АЦП в потоке
         while self.isRun:
             self.Va=self.GetADC()
             self.temp_signal.emit(self.Va)
-            time.sleep(1)
+            time.sleep(0.3)
 
     def stop(self):
         self.isRun=False
@@ -85,14 +85,15 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
     'sensor2_2':1,
     'Fan1_Allow':1,
     'Fan2_Allow':1,
-    'Channel1':[3.5708,5.3255,319.73,249.65],
-    'Channel2':[3.5708,5.3255,319.73,249.65],
-    'Channel3':[3.5708,5.3255,319.73,249.65],
-    'Channel4':[3.5708,5.3255,319.73,249.65],
-    'Channel5':[3.5708,5.3255,319.73,249.65],
-    'Channel6':[3.5708,5.3255,319.73,249.65],
+    'Channel1':[3.5708,5.3255,319.73,-249.65],
+    'Channel2':[3.5708,5.3255,319.73,-249.65],
+    'Channel3':[3.5708,5.3255,319.73,-249.65],
+    'Channel4':[3.5708,5.3255,319.73,-249.65],
+    'Channel5':[3.5708,5.3255,319.73,-249.65],
+    'Channel6':[3.5708,5.3255,319.73,-249.65],
     'Counter1':0,
     'Counter2':0}
+    Temp=[0,175,266.5,558 ]
     A3=0
     A2=0
     A1=0
@@ -104,6 +105,8 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
     lineCalcked=0
     Va=0
     isItStart=0
+    TextRow1=''
+    TextRow2=''
     
     def __init__ ( self, parent = None ):
         super(Calibrator, self).__init__(parent)
@@ -112,11 +115,14 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
         self.move(300, 50)
         self.setWindowModality(QtCore.Qt.WindowModal)
         self.setWindowFlags(Qt.FramelessWindowHint)
+        self.a=read_settings(self.a)
         self.set_adc()
+        
         self.Exit.pressed.connect(self.close)
         self.pBtn_Channel_1.setStyleSheet(CellSelect)
         self.R0.setStyleSheet(CellSelect)
-
+        
+        self.SaveButton.pressed.connect(lambda: save_settings(self.a))
         self.R0.pressed.connect(self.RB)
         self.R1.pressed.connect(self.RB)
         self.R2.pressed.connect(self.RB)
@@ -131,6 +137,7 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
 
         self.pushButton_2.pressed.connect(self.Get_Volts)
         self.pushButton_3.pressed.connect(self.Calc)
+        
 
         
     def __del__ ( self ):
@@ -189,10 +196,12 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
 
 
     def Calc(self):
+        sender=self.sender()
         if self.checkRow() == 0:
             self.textEdit.setText(u'Не все ячейки записаны')
             self.textEdit.setAlignment(Qt.AlignCenter)
             return
+        
         self.lineCalcked=1
         self.isItStart=0
         
@@ -220,6 +229,11 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
         xy[1][0]=self.Volts[1][0]
         xy[2][0]=self.Volts[2][0]
         xy[3][0]=self.Volts[3][0]
+        
+        xy[0][1]=self.Temp[0]
+        xy[1][1]=self.Temp[1]
+        xy[2][1]=self.Temp[2]
+        xy[3][1]=self.Temp[3]
         
         a6=0
         a5=0
@@ -354,6 +368,39 @@ class Calibrator ( QtGui.QMainWindow, Ui_Calibrator ):
             getattr(self, 'lineEdit_'+str((self.C-1)*4 +self.R +1)).setStyleSheet(CellWait)
         
         self.R=int(name[s-1])
+#------------------------Globals---------------------------------------------
+def read_settings(sets):
+    try:
+        with open('settings.txt', 'rt') as csvfile:
+            spamreader = csv.reader(csvfile, delimiter='=', quotechar='|')
+            for row in spamreader:
+                k, v = row
+                try:
+                    sets[k] = int(v)
+                except ValueError:
+                    line=v
+                    line=line.replace('[','')
+                    line=line.replace(']','')
+                    sets[k] = line.split(",")
+                    s=len(sets[k])
+                    i=0
+                    while i<s:                
+                        x = sets[k][i]
+                        x=float(x)
+                        sets[k][i]=x
+                        i+=1
+    except IOError:
+        sets=metrocss.a
+        save_settings(sets)   
+    return sets   
+
+def save_settings(sets):
+    with open('settings.txt', 'wt') as csvfile:
+        spamwriter = csv.writer(csvfile, delimiter='=',
+                                quotechar='|', quoting=csv.QUOTE_MINIMAL)
+        for key, val in sets.items():
+            spamwriter.writerow([key, val])
+
 #---------------------------StyleSheet---------------------------------------
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -378,3 +425,26 @@ CellSelect=_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 
 CellStored=_fromUtf8("font: 22pt \"HelveticaNeueCyr\";\n"
 "background-color: rgb(63, 179, 79);")
+
+def HtmlText(s1,s2):
+    out=_fromUtf8("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'HelveticaNeueCyr\'; font-size:28pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"%s</p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">%s</p></body></html>"(s1,s2))
+    return out
+    
+ButPassive=_fromUtf8("border-style: outset;\n"
+"font: 18pt \"HelveticaNeueCyr\";\n"
+"color:black;\n"
+" text-align: center;\n"
+" background-color: rgb(194, 194, 194);\n"
+"")
+
+ButActive=_fromUtf8("border-style: outset;\n"
+"font: 18pt \"HelveticaNeueCyr\";\n"
+"color:black;\n"
+" text-align: center;\n"
+" background-color: rgb(231, 126, 35);\n"
+"")
